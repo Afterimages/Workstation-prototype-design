@@ -1,0 +1,223 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Microsoft YaHei', Arial, sans-serif;
+  background: #f6f6fa;
+  color: #222;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #6c3fd3;
+  color: #fff;
+  padding: 0 40px;
+  height: 64px;
+  box-shadow: 0 2px 8px rgba(108,63,211,0.08);
+}
+.navbar .logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+.navbar nav a {
+  color: #fff;
+  margin: 0 16px;
+  text-decoration: none;
+  font-size: 1em;
+  transition: color 0.2s;
+}
+.navbar nav a:hover {
+  color: #e0d7f7;
+}
+#lang-switch {
+  background: #fff;
+  color: #6c3fd3;
+  border: none;
+  border-radius: 16px;
+  padding: 6px 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#lang-switch:hover {
+  background: #e0d7f7;
+}
+
+.carousel {
+  position: relative;
+  width: 100vw;
+  max-width: 1200px;
+  margin: 32px auto 0 auto;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(108,63,211,0.10);
+  background: #fff;
+}
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(.4,0,.2,1);
+}
+.carousel-inner img {
+  width: 100vw;
+  max-width: 1200px;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 18px;
+}
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(108,63,211,0.7);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5em;
+  cursor: pointer;
+  z-index: 2;
+}
+.carousel-btn.prev { left: 16px; }
+.carousel-btn.next { right: 16px; }
+
+.quick-entry {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin: 32px 0 0 0;
+}
+.entry-btn {
+  background: #fff;
+  border: 2px solid #e0d7f7;
+  border-radius: 16px;
+  padding: 18px 32px;
+  font-size: 1.1em;
+  color: #6c3fd3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(108,63,211,0.06);
+  transition: background 0.2s, border 0.2s;
+}
+.entry-btn img {
+  width: 28px;
+  height: 28px;
+}
+.entry-btn:hover {
+  background: #f3f0fa;
+  border: 2px solid #6c3fd3;
+}
+
+.section {
+  max-width: 1200px;
+  margin: 48px auto 0 auto;
+  padding: 0 24px;
+}
+.section h2 {
+  color: #6c3fd3;
+  font-size: 2em;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+}
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(108,63,211,0.07);
+  padding: 28px 24px;
+  flex: 1 1 220px;
+  min-width: 220px;
+  max-width: 260px;
+  margin-bottom: 16px;
+  color: #333;
+  border-left: 5px solid #6c3fd3;
+  transition: box-shadow 0.2s;
+}
+.card:hover {
+  box-shadow: 0 6px 24px rgba(108,63,211,0.13);
+}
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.news-list li {
+  margin-bottom: 12px;
+}
+.news-list a {
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px dashed #6c3fd3;
+  transition: color 0.2s;
+}
+.news-list a:hover {
+  color: #6c3fd3;
+}
+.team-list {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.team-member {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(108,63,211,0.07);
+  padding: 18px 12px;
+  text-align: center;
+  width: 140px;
+}
+.team-member img {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 2px solid #e0d7f7;
+}
+.footer {
+  background: #f3f0fa;
+  color: #6c3fd3;
+  text-align: center;
+  padding: 32px 0 16px 0;
+  margin-top: 48px;
+  font-size: 1em;
+  border-top: 1px solid #e0d7f7;
+}
+#to-top {
+  margin-top: 12px;
+  background: #6c3fd3;
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  padding: 8px 24px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.2s;
+}
+#to-top:hover {
+  background: #4b249c;
+}
+@media (max-width: 900px) {
+  .card-list, .team-list, .quick-entry {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 12px 8px;
+  }
+  .navbar nav {
+    margin-top: 8px;
+  }
+  .carousel-inner img {
+    height: 180px;
+  }
+} 
