@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>成果管理 - 认知与智能科学实验室</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+  <!-- 侧边栏 -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">认知与智能科学实验室</div>
+      <div class="subtitle">后台管理系统</div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">
+        <span class="nav-icon">📊</span>
+        <span class="nav-text">控制台</span>
+      </a>
+      <a href="achievements.html" class="nav-item active">
+        <span class="nav-icon">🏆</span>
+        <span class="nav-text">成果管理</span>
+      </a>
+      <a href="news.html" class="nav-item">
+        <span class="nav-icon">📰</span>
+        <span class="nav-text">新闻管理</span>
+      </a>
+      <a href="members.html" class="nav-item">
+        <span class="nav-icon">👥</span>
+        <span class="nav-text">成员管理</span>
+      </a>
+      <a href="projects.html" class="nav-item">
+        <span class="nav-icon">📋</span>
+        <span class="nav-text">项目管理</span>
+      </a>
+      <a href="messages.html" class="nav-item">
+        <span class="nav-icon">💬</span>
+        <span class="nav-text">留言管理</span>
+      </a>
+      <a href="applications.html" class="nav-item">
+        <span class="nav-icon">📝</span>
+        <span class="nav-text">申请管理</span>
+      </a>
+      <a href="settings.html" class="nav-item">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-text">系统设置</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="main-content">
+    <!-- 顶部导航 -->
+    <header class="admin-header">
+      <div class="header-left">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <h1>成果管理</h1>
+      </div>
+      <div class="header-right">
+        <div class="user-info">
+          <span class="username">管理员</span>
+          <button class="logout-btn" id="logoutBtn">退出</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 工具栏 -->
+    <section class="toolbar">
+      <div class="toolbar-left">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="搜索成果...">
+          <button class="search-btn">🔍</button>
+        </div>
+        <select id="categoryFilter" class="filter-select">
+          <option value="">全部分类</option>
+          <option value="papers">论文</option>
+          <option value="patents">专利</option>
+          <option value="software">软件系统</option>
+          <option value="awards">奖项</option>
+        </select>
+      </div>
+      <div class="toolbar-right">
+        <button class="add-btn" id="addAchievementBtn">➕ 添加成果</button>
+      </div>
+    </section>
+
+    <!-- 成果列表 -->
+    <section class="content-section">
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>标题</th>
+              <th>分类</th>
+              <th>日期</th>
+              <th>状态</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="achievementsTableBody">
+            <tr>
+              <td>基于深度学习的认知过程建模方法</td>
+              <td><span class="category-tag papers">论文</span></td>
+              <td>2024-05-15</td>
+              <td><span class="status-badge published">已发布</span></td>
+              <td>
+                <button class="action-btn edit" data-id="1">编辑</button>
+                <button class="action-btn delete" data-id="1">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td>一种基于脑电信号的智能控制系统</td>
+              <td><span class="category-tag patents">专利</span></td>
+              <td>2024-04-20</td>
+              <td><span class="status-badge published">已发布</span></td>
+              <td>
+                <button class="action-btn edit" data-id="2">编辑</button>
+                <button class="action-btn delete" data-id="2">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td>认知建模平台v2.0</td>
+              <td><span class="category-tag software">软件系统</span></td>
+              <td>2024-03-10</td>
+              <td><span class="status-badge published">已发布</span></td>
+              <td>
+                <button class="action-btn edit" data-id="3">编辑</button>
+                <button class="action-btn delete" data-id="3">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td>省级科技进步一等奖</td>
+              <td><span class="category-tag awards">奖项</span></td>
+              <td>2024-02-28</td>
+              <td><span class="status-badge published">已发布</span></td>
+              <td>
+                <button class="action-btn edit" data-id="4">编辑</button>
+                <button class="action-btn delete" data-id="4">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td>多模态感知融合算法研究</td>
+              <td><span class="category-tag papers">论文</span></td>
+              <td>2024-01-15</td>
+              <td><span class="status-badge draft">草稿</span></td>
+              <td>
+                <button class="action-btn edit" data-id="5">编辑</button>
+                <button class="action-btn delete" data-id="5">删除</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- 添加/编辑成果弹窗 -->
+  <div class="modal" id="achievementModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle">添加成果</h2>
+        <button class="close-btn" id="closeModal">&times;</button>
+      </div>
+      <form id="achievementForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="achievementTitle">标题 *</label>
+            <input type="text" id="achievementTitle" name="title" required>
+          </div>
+          <div class="form-group">
+            <label for="achievementCategory">分类 *</label>
+            <select id="achievementCategory" name="category" required>
+              <option value="">请选择分类</option>
+              <option value="papers">论文</option>
+              <option value="patents">专利</option>
+              <option value="software">软件系统</option>
+              <option value="awards">奖项</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="achievementDate">日期 *</label>
+          <input type="date" id="achievementDate" name="date" required>
+        </div>
+        <div class="form-group">
+          <label for="achievementDescription">描述</label>
+          <textarea id="achievementDescription" name="description" rows="4" placeholder="请输入成果描述..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="achievementStatus">状态</label>
+          <select id="achievementStatus" name="status">
+            <option value="published">已发布</option>
+            <option value="draft">草稿</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="cancel-btn" id="cancelBtn">取消</button>
+          <button type="submit" class="save-btn">保存</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="achievements.js"></script>
+</body>
+</html> 

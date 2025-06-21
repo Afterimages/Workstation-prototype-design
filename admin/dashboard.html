@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>控制台 - 认知与智能科学实验室</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+  <!-- 侧边栏 -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">认知与智能科学实验室</div>
+      <div class="subtitle">后台管理系统</div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item active">
+        <span class="nav-icon">📊</span>
+        <span class="nav-text">控制台</span>
+      </a>
+      <a href="achievements.html" class="nav-item">
+        <span class="nav-icon">🏆</span>
+        <span class="nav-text">成果管理</span>
+      </a>
+      <a href="news.html" class="nav-item">
+        <span class="nav-icon">📰</span>
+        <span class="nav-text">新闻管理</span>
+      </a>
+      <a href="members.html" class="nav-item">
+        <span class="nav-icon">👥</span>
+        <span class="nav-text">成员管理</span>
+      </a>
+      <a href="projects.html" class="nav-item">
+        <span class="nav-icon">📋</span>
+        <span class="nav-text">项目管理</span>
+      </a>
+      <a href="messages.html" class="nav-item">
+        <span class="nav-icon">💬</span>
+        <span class="nav-text">留言管理</span>
+      </a>
+      <a href="applications.html" class="nav-item">
+        <span class="nav-icon">📝</span>
+        <span class="nav-text">申请管理</span>
+      </a>
+      <a href="settings.html" class="nav-item">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-text">系统设置</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="main-content">
+    <!-- 顶部导航 -->
+    <header class="admin-header">
+      <div class="header-left">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <h1>控制台</h1>
+      </div>
+      <div class="header-right">
+        <div class="user-info">
+          <span class="username">管理员</span>
+          <button class="logout-btn" id="logoutBtn">退出</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 数据总览 -->
+    <section class="dashboard-section">
+      <h2>数据总览</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">📄</div>
+          <div class="stat-content">
+            <h3>文章总数</h3>
+            <p class="stat-number">156</p>
+            <span class="stat-change positive">+12%</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-content">
+            <h3>访问量</h3>
+            <p class="stat-number">2,847</p>
+            <span class="stat-change positive">+8%</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">💬</div>
+          <div class="stat-content">
+            <h3>留言数</h3>
+            <p class="stat-number">89</p>
+            <span class="stat-change positive">+15%</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📝</div>
+          <div class="stat-content">
+            <h3>申请数</h3>
+            <p class="stat-number">23</p>
+            <span class="stat-change neutral">0%</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 图表和活动 -->
+    <div class="dashboard-grid">
+      <!-- 访问趋势图 -->
+      <section class="dashboard-section">
+        <h2>访问趋势</h2>
+        <div class="chart-container">
+          <canvas id="visitChart" width="400" height="200"></canvas>
+        </div>
+      </section>
+
+      <!-- 最近活动 -->
+      <section class="dashboard-section">
+        <h2>最近活动</h2>
+        <div class="activity-list">
+          <div class="activity-item">
+            <div class="activity-icon">📝</div>
+            <div class="activity-content">
+              <h4>新增成果</h4>
+              <p>添加了新的研究成果《基于深度学习的认知建模方法》</p>
+              <span class="activity-time">2小时前</span>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-icon">📰</div>
+            <div class="activity-content">
+              <h4>发布新闻</h4>
+              <p>发布了新闻《实验室荣获省级科技进步奖》</p>
+              <span class="activity-time">4小时前</span>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-icon">💬</div>
+            <div class="activity-content">
+              <h4>新留言</h4>
+              <p>收到来自张先生的留言咨询</p>
+              <span class="activity-time">6小时前</span>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-icon">👥</div>
+            <div class="activity-content">
+              <h4>成员更新</h4>
+              <p>更新了团队成员李博士的信息</p>
+              <span class="activity-time">1天前</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 快速操作 -->
+    <section class="dashboard-section">
+      <h2>快速操作</h2>
+      <div class="quick-actions">
+        <button class="action-btn" onclick="location.href='achievements.html'">
+          <span class="action-icon">➕</span>
+          <span>添加成果</span>
+        </button>
+        <button class="action-btn" onclick="location.href='news.html'">
+          <span class="action-icon">📰</span>
+          <span>发布新闻</span>
+        </button>
+        <button class="action-btn" onclick="location.href='members.html'">
+          <span class="action-icon">👤</span>
+          <span>添加成员</span>
+        </button>
+        <button class="action-btn" onclick="location.href='messages.html'">
+          <span class="action-icon">💬</span>
+          <span>查看留言</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <script src="dashboard.js"></script>
+</body>
+</html> 
