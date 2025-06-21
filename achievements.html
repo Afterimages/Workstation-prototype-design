@@ -4,95 +4,101 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>成果展示 - 认知与智能科学实验室</title>
+  <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- 顶部导航 -->
-  <header class="navbar">
-    <div class="logo">认知与智能科学实验室</div>
-    <nav>
-      <a href="index.html">首页</a>
-      <a href="about.html">实验室简介</a>
-      <a href="directions.html">科研方向</a>
-      <a href="achievements.html" class="active">成果展示</a>
-      <a href="news.html">新闻动态</a>
-      <a href="contact.html">联系我们</a>
-      <a href="join.html">加入我们</a>
-    </nav>
-    <button id="lang-switch">EN</button>
-  </header>
+  <!-- 引入通用导航栏 -->
+  <div id="header-container"></div>
 
-  <main class="section" id="achievements">
-    <h2>成果展示</h2>
-    <div class="filter-bar">
-      <button class="filter-btn active" data-category="all">全部</button>
-      <button class="filter-btn" data-category="papers">论文</button>
-      <button class="filter-btn" data-category="patents">专利</button>
-      <button class="filter-btn" data-category="software">软件系统</button>
-      <button class="filter-btn" data-category="awards">奖项</button>
+  <!-- 页面标题 -->
+  <section class="page-header">
+    <div class="container">
+      <h1 data-i18n="nav.achievements">成果展示</h1>
+      <p>展示实验室在科研领域的优秀成果和重要贡献</p>
     </div>
-    <div class="achievements-list">
-      <div class="achievement-card" data-category="papers">
-        <h3>基于深度学习的认知过程建模方法</h3>
-        <p>发表于Nature Machine Intelligence，提出了一种新的认知建模框架，在多个基准数据集上取得了SOTA结果。</p>
-        <div class="achievement-meta">
-          <span class="category">论文</span>
-          <span class="date">2024-05-15</span>
-        </div>
-      </div>
-      <div class="achievement-card" data-category="patents">
-        <h3>一种基于脑电信号的智能控制系统</h3>
-        <p>发明专利，实现了基于脑电信号的实时控制，可用于智能假肢、轮椅等辅助设备。</p>
-        <div class="achievement-meta">
-          <span class="category">专利</span>
-          <span class="date">2024-04-20</span>
-        </div>
-      </div>
-      <div class="achievement-card" data-category="software">
-        <h3>认知建模平台v2.0</h3>
-        <p>开源软件系统，提供完整的认知过程建模工具链，支持多种建模方法和可视化分析。</p>
-        <div class="achievement-meta">
-          <span class="category">软件系统</span>
-          <span class="date">2024-03-10</span>
-        </div>
-      </div>
-      <div class="achievement-card" data-category="awards">
-        <h3>省级科技进步一等奖</h3>
-        <p>因在认知科学与人工智能交叉领域的突出贡献，获得省级科技进步一等奖。</p>
-        <div class="achievement-meta">
-          <span class="category">奖项</span>
-          <span class="date">2024-02-28</span>
-        </div>
-      </div>
-      <div class="achievement-card" data-category="papers">
-        <h3>多模态感知融合算法研究</h3>
-        <p>发表于IEEE TPAMI，提出了一种新的多模态感知融合方法，在机器人感知领域取得重要突破。</p>
-        <div class="achievement-meta">
-          <span class="category">论文</span>
-          <span class="date">2024-01-15</span>
-        </div>
-      </div>
-      <div class="achievement-card" data-category="software">
-        <h3>智能诊断系统</h3>
-        <p>医疗AI系统，基于深度学习技术，在多个疾病诊断任务中达到专家水平。</p>
-        <div class="achievement-meta">
-          <span class="category">软件系统</span>
-          <span class="date">2023-12-20</span>
-        </div>
-      </div>
-    </div>
-    <div class="pagination">
-      <button class="page-btn" data-page="1">1</button>
-      <button class="page-btn" data-page="2">2</button>
-      <button class="page-btn" data-page="3">3</button>
-    </div>
-  </main>
+  </section>
 
-  <footer class="footer">
-    <div>联系方式：lab@cislab.edu.cn | 地址：XX大学XX楼XX室</div>
-    <div>© 2024 认知与智能科学实验室 | 粤ICP备xxxx号</div>
-    <div><button id="to-top">返回顶部</button></div>
-  </footer>
+  <!-- 成果展示内容 -->
+  <section class="section">
+    <div class="container">
+      <div class="filter-bar">
+        <button class="filter-btn active" data-category="all">全部</button>
+        <button class="filter-btn" data-category="papers">论文</button>
+        <button class="filter-btn" data-category="patents">专利</button>
+        <button class="filter-btn" data-category="software">软件系统</button>
+        <button class="filter-btn" data-category="awards">奖项</button>
+      </div>
+      
+      <div class="achievements-list">
+        <div class="achievement-card" data-category="papers">
+          <h3>基于深度学习的认知过程建模方法</h3>
+          <p>发表于Nature Machine Intelligence，提出了一种新的认知建模框架，在多个基准数据集上取得了SOTA结果。</p>
+          <div class="achievement-meta">
+            <span class="category">论文</span>
+            <span class="date">2024-05-15</span>
+          </div>
+        </div>
+        
+        <div class="achievement-card" data-category="patents">
+          <h3>一种基于脑电信号的智能控制系统</h3>
+          <p>发明专利，实现了基于脑电信号的实时控制，可用于智能假肢、轮椅等辅助设备。</p>
+          <div class="achievement-meta">
+            <span class="category">专利</span>
+            <span class="date">2024-04-20</span>
+          </div>
+        </div>
+        
+        <div class="achievement-card" data-category="software">
+          <h3>认知建模平台v2.0</h3>
+          <p>开源软件系统，提供完整的认知过程建模工具链，支持多种建模方法和可视化分析。</p>
+          <div class="achievement-meta">
+            <span class="category">软件系统</span>
+            <span class="date">2024-03-10</span>
+          </div>
+        </div>
+        
+        <div class="achievement-card" data-category="awards">
+          <h3>省级科技进步一等奖</h3>
+          <p>因在认知科学与人工智能交叉领域的突出贡献，获得省级科技进步一等奖。</p>
+          <div class="achievement-meta">
+            <span class="category">奖项</span>
+            <span class="date">2024-02-28</span>
+          </div>
+        </div>
+        
+        <div class="achievement-card" data-category="papers">
+          <h3>多模态感知融合算法研究</h3>
+          <p>发表于IEEE TPAMI，提出了一种新的多模态感知融合方法，在机器人感知领域取得重要突破。</p>
+          <div class="achievement-meta">
+            <span class="category">论文</span>
+            <span class="date">2024-01-15</span>
+          </div>
+        </div>
+        
+        <div class="achievement-card" data-category="software">
+          <h3>智能诊断系统</h3>
+          <p>医疗AI系统，基于深度学习技术，在多个疾病诊断任务中达到专家水平。</p>
+          <div class="achievement-meta">
+            <span class="category">软件系统</span>
+            <span class="date">2023-12-20</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pagination">
+        <button class="page-btn" data-page="1">1</button>
+        <button class="page-btn" data-page="2">2</button>
+        <button class="page-btn" data-page="3">3</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 引入通用页脚 -->
+  <div id="footer-container"></div>
+
+  <script src="js/common.js"></script>
+  <script src="js/component-loader.js"></script>
   <script src="achievements.js"></script>
 </body>
 </html> 
