@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>项目管理 - 认知与智能科学实验室</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+  <!-- 侧边栏 -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">认知与智能科学实验室</div>
+      <div class="subtitle">后台管理系统</div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">
+        <span class="nav-icon">📊</span>
+        <span class="nav-text">控制台</span>
+      </a>
+      <a href="achievements.html" class="nav-item">
+        <span class="nav-icon">🏆</span>
+        <span class="nav-text">成果管理</span>
+      </a>
+      <a href="news.html" class="nav-item">
+        <span class="nav-icon">📰</span>
+        <span class="nav-text">新闻管理</span>
+      </a>
+      <a href="members.html" class="nav-item">
+        <span class="nav-icon">👥</span>
+        <span class="nav-text">成员管理</span>
+      </a>
+      <a href="projects.html" class="nav-item active">
+        <span class="nav-icon">📋</span>
+        <span class="nav-text">项目管理</span>
+      </a>
+      <a href="messages.html" class="nav-item">
+        <span class="nav-icon">💬</span>
+        <span class="nav-text">留言管理</span>
+      </a>
+      <a href="applications.html" class="nav-item">
+        <span class="nav-icon">📝</span>
+        <span class="nav-text">申请管理</span>
+      </a>
+      <a href="settings.html" class="nav-item">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-text">系统设置</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="main-content">
+    <!-- 顶部导航 -->
+    <header class="admin-header">
+      <div class="header-left">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <h1>项目管理</h1>
+      </div>
+      <div class="header-right">
+        <div class="user-info">
+          <span class="username">管理员</span>
+          <button class="logout-btn" id="logoutBtn">退出</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 工具栏 -->
+    <section class="toolbar">
+      <div class="toolbar-left">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="搜索项目...">
+          <button class="search-btn">🔍</button>
+        </div>
+        <select id="categoryFilter" class="filter-select">
+          <option value="">全部分类</option>
+          <option value="research">研究项目</option>
+          <option value="development">开发项目</option>
+          <option value="cooperation">合作项目</option>
+          <option value="funding">资助项目</option>
+        </select>
+        <select id="statusFilter" class="filter-select">
+          <option value="">全部状态</option>
+          <option value="planning">规划中</option>
+          <option value="ongoing">进行中</option>
+          <option value="completed">已完成</option>
+          <option value="suspended">暂停</option>
+        </select>
+      </div>
+      <div class="toolbar-right">
+        <button class="add-btn" id="addProjectBtn">➕ 添加项目</button>
+      </div>
+    </section>
+
+    <!-- 项目列表 -->
+    <section class="content-section">
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>项目名称</th>
+              <th>分类</th>
+              <th>负责人</th>
+              <th>开始时间</th>
+              <th>结束时间</th>
+              <th>进度</th>
+              <th>状态</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="projectsTableBody">
+            <tr>
+              <td>基于深度学习的认知过程建模</td>
+              <td><span class="category-tag research">研究项目</span></td>
+              <td>张明华</td>
+              <td>2024-01-15</td>
+              <td>2024-12-31</td>
+              <td>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 65%"></div>
+                  <span class="progress-text">65%</span>
+                </div>
+              </td>
+              <td><span class="status-badge ongoing">进行中</span></td>
+              <td>
+                <button class="action-btn edit" data-id="1">编辑</button>
+                <button class="action-btn delete" data-id="1">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td>认知计算平台v3.0开发</td>
+              <td><span class="category-tag development">开发项目</span></td>
+              <td>李思思</td>
+              <td>2024-03-01</td>
+              <td>2024-08-31</td>
+              <td>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 45%"></div>
+                  <span class="progress-text">45%</span>
+                </div>
+              </td>
+              <td><span class="status-badge ongoing">进行中</span></td>
+              <td>
+                <button class="action-btn edit" data-id="2">编辑</button>
+                <button class="action-btn delete" data-id="2">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td>多模态感知融合算法研究</td>
+              <td><span class="category-tag research">研究项目</span></td>
+              <td>王浩然</td>
+              <td>2024-02-01</td>
+              <td>2024-06-30</td>
+              <td>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 80%"></div>
+                  <span class="progress-text">80%</span>
+                </div>
+              </td>
+              <td><span class="status-badge ongoing">进行中</span></td>
+              <td>
+                <button class="action-btn edit" data-id="3">编辑</button>
+                <button class="action-btn delete" data-id="3">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td>脑机接口技术合作研究</td>
+              <td><span class="category-tag cooperation">合作项目</span></td>
+              <td>刘志强</td>
+              <td>2024-01-01</td>
+              <td>2024-12-31</td>
+              <td>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 30%"></div>
+                  <span class="progress-text">30%</span>
+                </div>
+              </td>
+              <td><span class="status-badge ongoing">进行中</span></td>
+              <td>
+                <button class="action-btn edit" data-id="4">编辑</button>
+                <button class="action-btn delete" data-id="4">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td>认知科学基础理论研究</td>
+              <td><span class="category-tag research">研究项目</span></td>
+              <td>张明华</td>
+              <td>2023-09-01</td>
+              <td>2024-08-31</td>
+              <td>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 100%"></div>
+                  <span class="progress-text">100%</span>
+                </div>
+              </td>
+              <td><span class="status-badge completed">已完成</span></td>
+              <td>
+                <button class="action-btn edit" data-id="5">编辑</button>
+                <button class="action-btn delete" data-id="5">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td>人工智能教育平台开发</td>
+              <td><span class="category-tag development">开发项目</span></td>
+              <td>陈小雨</td>
+              <td>2024-04-01</td>
+              <td>2024-10-31</td>
+              <td>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 15%"></div>
+                  <span class="progress-text">15%</span>
+                </div>
+              </td>
+              <td><span class="status-badge planning">规划中</span></td>
+              <td>
+                <button class="action-btn edit" data-id="6">编辑</button>
+                <button class="action-btn delete" data-id="6">删除</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- 添加/编辑项目弹窗 -->
+  <div class="modal" id="projectModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle">添加项目</h2>
+        <button class="close-btn" id="closeModal">&times;</button>
+      </div>
+      <form id="projectForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="projectName">项目名称 *</label>
+            <input type="text" id="projectName" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="projectCategory">项目分类 *</label>
+            <select id="projectCategory" name="category" required>
+              <option value="">请选择分类</option>
+              <option value="research">研究项目</option>
+              <option value="development">开发项目</option>
+              <option value="cooperation">合作项目</option>
+              <option value="funding">资助项目</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="projectLeader">负责人 *</label>
+            <input type="text" id="projectLeader" name="leader" required>
+          </div>
+          <div class="form-group">
+            <label for="projectStatus">项目状态</label>
+            <select id="projectStatus" name="status">
+              <option value="planning">规划中</option>
+              <option value="ongoing">进行中</option>
+              <option value="completed">已完成</option>
+              <option value="suspended">暂停</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="projectStartDate">开始时间 *</label>
+            <input type="date" id="projectStartDate" name="startDate" required>
+          </div>
+          <div class="form-group">
+            <label for="projectEndDate">结束时间 *</label>
+            <input type="date" id="projectEndDate" name="endDate" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="projectProgress">项目进度 (%)</label>
+            <input type="number" id="projectProgress" name="progress" min="0" max="100" value="0">
+          </div>
+          <div class="form-group">
+            <label for="projectBudget">项目预算 (万元)</label>
+            <input type="number" id="projectBudget" name="budget" min="0" step="0.1">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="projectDescription">项目描述</label>
+          <textarea id="projectDescription" name="description" rows="4" placeholder="请输入项目描述..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="projectMembers">项目成员</label>
+          <textarea id="projectMembers" name="members" rows="3" placeholder="请输入项目成员名单..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="projectGoals">项目目标</label>
+          <textarea id="projectGoals" name="goals" rows="3" placeholder="请输入项目目标..."></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="cancel-btn" id="cancelBtn">取消</button>
+          <button type="submit" class="save-btn">保存</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="projects.js"></script>
+</body>
+</html> 

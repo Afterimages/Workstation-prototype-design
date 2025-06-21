@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>留言管理 - 认知与智能科学实验室</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+  <!-- 侧边栏 -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">认知与智能科学实验室</div>
+      <div class="subtitle">后台管理系统</div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">
+        <span class="nav-icon">📊</span>
+        <span class="nav-text">控制台</span>
+      </a>
+      <a href="achievements.html" class="nav-item">
+        <span class="nav-icon">🏆</span>
+        <span class="nav-text">成果管理</span>
+      </a>
+      <a href="news.html" class="nav-item">
+        <span class="nav-icon">📰</span>
+        <span class="nav-text">新闻管理</span>
+      </a>
+      <a href="members.html" class="nav-item">
+        <span class="nav-icon">👥</span>
+        <span class="nav-text">成员管理</span>
+      </a>
+      <a href="projects.html" class="nav-item">
+        <span class="nav-icon">📋</span>
+        <span class="nav-text">项目管理</span>
+      </a>
+      <a href="messages.html" class="nav-item active">
+        <span class="nav-icon">💬</span>
+        <span class="nav-text">留言管理</span>
+      </a>
+      <a href="applications.html" class="nav-item">
+        <span class="nav-icon">📝</span>
+        <span class="nav-text">申请管理</span>
+      </a>
+      <a href="settings.html" class="nav-item">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-text">系统设置</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="main-content">
+    <!-- 顶部导航 -->
+    <header class="admin-header">
+      <div class="header-left">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <h1>留言管理</h1>
+      </div>
+      <div class="header-right">
+        <div class="user-info">
+          <span class="username">管理员</span>
+          <button class="logout-btn" id="logoutBtn">退出</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 工具栏 -->
+    <section class="toolbar">
+      <div class="toolbar-left">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="搜索留言...">
+          <button class="search-btn">🔍</button>
+        </div>
+        <select id="statusFilter" class="filter-select">
+          <option value="">全部状态</option>
+          <option value="unread">未读</option>
+          <option value="read">已读</option>
+          <option value="replied">已回复</option>
+          <option value="archived">已归档</option>
+        </select>
+        <select id="typeFilter" class="filter-select">
+          <option value="">全部类型</option>
+          <option value="inquiry">咨询</option>
+          <option value="suggestion">建议</option>
+          <option value="cooperation">合作</option>
+          <option value="other">其他</option>
+        </select>
+      </div>
+      <div class="toolbar-right">
+        <button class="action-btn" id="markAllReadBtn">📖 全部标记已读</button>
+        <button class="action-btn" id="exportBtn">📤 导出留言</button>
+      </div>
+    </section>
+
+    <!-- 留言列表 -->
+    <section class="content-section">
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>状态</th>
+              <th>留言人</th>
+              <th>邮箱</th>
+              <th>类型</th>
+              <th>主题</th>
+              <th>留言时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="messagesTableBody">
+            <tr class="message-row unread" data-id="1">
+              <td><span class="status-badge unread">未读</span></td>
+              <td>张三</td>
+              <td>zhangsan@email.com</td>
+              <td><span class="type-tag inquiry">咨询</span></td>
+              <td>关于实验室实习机会的咨询</td>
+              <td>2024-05-20 14:30</td>
+              <td>
+                <button class="action-btn view" data-id="1">查看</button>
+                <button class="action-btn reply" data-id="1">回复</button>
+                <button class="action-btn delete" data-id="1">删除</button>
+              </td>
+            </tr>
+            <tr class="message-row read" data-id="2">
+              <td><span class="status-badge read">已读</span></td>
+              <td>李四</td>
+              <td>lisi@email.com</td>
+              <td><span class="type-tag suggestion">建议</span></td>
+              <td>对实验室网站的建议</td>
+              <td>2024-05-19 16:45</td>
+              <td>
+                <button class="action-btn view" data-id="2">查看</button>
+                <button class="action-btn reply" data-id="2">回复</button>
+                <button class="action-btn delete" data-id="2">删除</button>
+              </td>
+            </tr>
+            <tr class="message-row replied" data-id="3">
+              <td><span class="status-badge replied">已回复</span></td>
+              <td>王五</td>
+              <td>wangwu@email.com</td>
+              <td><span class="type-tag cooperation">合作</span></td>
+              <td>寻求科研合作机会</td>
+              <td>2024-05-18 09:15</td>
+              <td>
+                <button class="action-btn view" data-id="3">查看</button>
+                <button class="action-btn reply" data-id="3">回复</button>
+                <button class="action-btn delete" data-id="3">删除</button>
+              </td>
+            </tr>
+            <tr class="message-row unread" data-id="4">
+              <td><span class="status-badge unread">未读</span></td>
+              <td>赵六</td>
+              <td>zhaoliu@email.com</td>
+              <td><span class="type-tag inquiry">咨询</span></td>
+              <td>关于研究生招生的问题</td>
+              <td>2024-05-20 11:20</td>
+              <td>
+                <button class="action-btn view" data-id="4">查看</button>
+                <button class="action-btn reply" data-id="4">回复</button>
+                <button class="action-btn delete" data-id="4">删除</button>
+              </td>
+            </tr>
+            <tr class="message-row archived" data-id="5">
+              <td><span class="status-badge archived">已归档</span></td>
+              <td>孙七</td>
+              <td>sunqi@email.com</td>
+              <td><span class="type-tag other">其他</span></td>
+              <td>感谢实验室的回复</td>
+              <td>2024-05-15 13:30</td>
+              <td>
+                <button class="action-btn view" data-id="5">查看</button>
+                <button class="action-btn reply" data-id="5">回复</button>
+                <button class="action-btn delete" data-id="5">删除</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- 查看留言弹窗 -->
+  <div class="modal" id="viewMessageModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>查看留言</h2>
+        <button class="close-btn" id="closeViewModal">&times;</button>
+      </div>
+      <div class="message-detail" id="messageDetail">
+        <div class="message-info">
+          <div class="info-row">
+            <span class="label">留言人：</span>
+            <span class="value" id="viewName"></span>
+          </div>
+          <div class="info-row">
+            <span class="label">邮箱：</span>
+            <span class="value" id="viewEmail"></span>
+          </div>
+          <div class="info-row">
+            <span class="label">类型：</span>
+            <span class="value" id="viewType"></span>
+          </div>
+          <div class="info-row">
+            <span class="label">时间：</span>
+            <span class="value" id="viewTime"></span>
+          </div>
+        </div>
+        <div class="message-content">
+          <h3>留言内容：</h3>
+          <div class="content-text" id="viewContent"></div>
+        </div>
+        <div class="message-reply" id="viewReply" style="display: none;">
+          <h3>回复内容：</h3>
+          <div class="reply-text" id="viewReplyText"></div>
+          <div class="reply-time" id="viewReplyTime"></div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="cancel-btn" id="closeViewBtn">关闭</button>
+        <button class="reply-btn" id="replyFromViewBtn">回复</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 回复留言弹窗 -->
+  <div class="modal" id="replyMessageModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>回复留言</h2>
+        <button class="close-btn" id="closeReplyModal">&times;</button>
+      </div>
+      <form id="replyForm">
+        <div class="reply-info">
+          <div class="info-row">
+            <span class="label">回复给：</span>
+            <span class="value" id="replyToName"></span>
+          </div>
+          <div class="info-row">
+            <span class="label">邮箱：</span>
+            <span class="value" id="replyToEmail"></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="replySubject">回复主题</label>
+          <input type="text" id="replySubject" name="subject" required>
+        </div>
+        <div class="form-group">
+          <label for="replyContent">回复内容 *</label>
+          <textarea id="replyContent" name="content" rows="6" placeholder="请输入回复内容..." required></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="cancel-btn" id="cancelReplyBtn">取消</button>
+          <button type="submit" class="save-btn">发送回复</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="messages.js"></script>
+</body>
+</html> 
