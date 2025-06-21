@@ -439,6 +439,24 @@
   background: #f8f9fa;
 }
 
+/* 成员头像 */
+.member-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f0fa;
+}
+
+.member-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* 分类标签 */
 .category-tag {
   display: inline-block;
@@ -465,6 +483,53 @@
   background: #ef4444;
 }
 
+/* 新闻分类标签 */
+.category-tag.lab-news {
+  background: #8b5cf6;
+}
+
+.category-tag.research {
+  background: #06b6d4;
+}
+
+.category-tag.events {
+  background: #f59e0b;
+}
+
+.category-tag.awards {
+  background: #ef4444;
+}
+
+/* 角色标签 */
+.role-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: 500;
+  color: #fff;
+}
+
+.role-tag.advisor {
+  background: #dc2626;
+}
+
+.role-tag.phd {
+  background: #7c3aed;
+}
+
+.role-tag.master {
+  background: #059669;
+}
+
+.role-tag.undergraduate {
+  background: #d97706;
+}
+
+.role-tag.researcher {
+  background: #0891b2;
+}
+
 /* 状态徽章 */
 .status-badge {
   display: inline-block;
@@ -480,6 +545,21 @@
 }
 
 .status-badge.draft {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge.active {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-badge.graduated {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.status-badge.visiting {
   background: #fef3c7;
   color: #92400e;
 }
@@ -617,6 +697,27 @@ form {
 .form-group textarea {
   resize: vertical;
   min-height: 100px;
+}
+
+/* 文件上传样式 */
+.form-group input[type="file"] {
+  padding: 8px;
+  border: 2px dashed #e0d7f7;
+  background: #f8f9fa;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.form-group input[type="file"]:hover {
+  border-color: #6c3fd3;
+  background: #f3f0fa;
+}
+
+.form-group small {
+  display: block;
+  margin-top: 4px;
+  color: #666;
+  font-size: 0.8em;
 }
 
 .form-actions {

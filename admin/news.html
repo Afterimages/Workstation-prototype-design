@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新闻管理 - 认知与智能科学实验室</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+  <!-- 侧边栏 -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">认知与智能科学实验室</div>
+      <div class="subtitle">后台管理系统</div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">
+        <span class="nav-icon">📊</span>
+        <span class="nav-text">控制台</span>
+      </a>
+      <a href="achievements.html" class="nav-item">
+        <span class="nav-icon">🏆</span>
+        <span class="nav-text">成果管理</span>
+      </a>
+      <a href="news.html" class="nav-item active">
+        <span class="nav-icon">📰</span>
+        <span class="nav-text">新闻管理</span>
+      </a>
+      <a href="members.html" class="nav-item">
+        <span class="nav-icon">👥</span>
+        <span class="nav-text">成员管理</span>
+      </a>
+      <a href="projects.html" class="nav-item">
+        <span class="nav-icon">📋</span>
+        <span class="nav-text">项目管理</span>
+      </a>
+      <a href="messages.html" class="nav-item">
+        <span class="nav-icon">💬</span>
+        <span class="nav-text">留言管理</span>
+      </a>
+      <a href="applications.html" class="nav-item">
+        <span class="nav-icon">📝</span>
+        <span class="nav-text">申请管理</span>
+      </a>
+      <a href="settings.html" class="nav-item">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-text">系统设置</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="main-content">
+    <!-- 顶部导航 -->
+    <header class="admin-header">
+      <div class="header-left">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <h1>新闻管理</h1>
+      </div>
+      <div class="header-right">
+        <div class="user-info">
+          <span class="username">管理员</span>
+          <button class="logout-btn" id="logoutBtn">退出</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 工具栏 -->
+    <section class="toolbar">
+      <div class="toolbar-left">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="搜索新闻...">
+          <button class="search-btn">🔍</button>
+        </div>
+        <select id="categoryFilter" class="filter-select">
+          <option value="">全部分类</option>
+          <option value="lab-news">实验室动态</option>
+          <option value="research">研究进展</option>
+          <option value="events">活动通知</option>
+          <option value="awards">获奖信息</option>
+        </select>
+        <select id="statusFilter" class="filter-select">
+          <option value="">全部状态</option>
+          <option value="published">已发布</option>
+          <option value="draft">草稿</option>
+        </select>
+      </div>
+      <div class="toolbar-right">
+        <button class="add-btn" id="addNewsBtn">➕ 添加新闻</button>
+      </div>
+    </section>
+
+    <!-- 新闻列表 -->
+    <section class="content-section">
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>标题</th>
+              <th>分类</th>
+              <th>发布时间</th>
+              <th>浏览量</th>
+              <th>状态</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="newsTableBody">
+            <tr>
+              <td>实验室成功举办认知科学学术研讨会</td>
+              <td><span class="category-tag lab-news">实验室动态</span></td>
+              <td>2024-05-20</td>
+              <td>1,234</td>
+              <td><span class="status-badge published">已发布</span></td>
+              <td>
+                <button class="action-btn edit" data-id="1">编辑</button>
+                <button class="action-btn delete" data-id="1">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td>深度学习在认知建模中的最新应用</td>
+              <td><span class="category-tag research">研究进展</span></td>
+              <td>2024-05-18</td>
+              <td>856</td>
+              <td><span class="status-badge published">已发布</span></td>
+              <td>
+                <button class="action-btn edit" data-id="2">编辑</button>
+                <button class="action-btn delete" data-id="2">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td>2024年暑期实习项目招募通知</td>
+              <td><span class="category-tag events">活动通知</span></td>
+              <td>2024-05-15</td>
+              <td>2,156</td>
+              <td><span class="status-badge published">已发布</span></td>
+              <td>
+                <button class="action-btn edit" data-id="3">编辑</button>
+                <button class="action-btn delete" data-id="3">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td>实验室成员获得国际认知科学奖</td>
+              <td><span class="category-tag awards">获奖信息</span></td>
+              <td>2024-05-12</td>
+              <td>1,789</td>
+              <td><span class="status-badge published">已发布</span></td>
+              <td>
+                <button class="action-btn edit" data-id="4">编辑</button>
+                <button class="action-btn delete" data-id="4">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td>认知计算平台v3.0开发进展</td>
+              <td><span class="category-tag research">研究进展</span></td>
+              <td>2024-05-10</td>
+              <td>0</td>
+              <td><span class="status-badge draft">草稿</span></td>
+              <td>
+                <button class="action-btn edit" data-id="5">编辑</button>
+                <button class="action-btn delete" data-id="5">删除</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- 添加/编辑新闻弹窗 -->
+  <div class="modal" id="newsModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle">添加新闻</h2>
+        <button class="close-btn" id="closeModal">&times;</button>
+      </div>
+      <form id="newsForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="newsTitle">标题 *</label>
+            <input type="text" id="newsTitle" name="title" required>
+          </div>
+          <div class="form-group">
+            <label for="newsCategory">分类 *</label>
+            <select id="newsCategory" name="category" required>
+              <option value="">请选择分类</option>
+              <option value="lab-news">实验室动态</option>
+              <option value="research">研究进展</option>
+              <option value="events">活动通知</option>
+              <option value="awards">获奖信息</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="newsDate">发布时间 *</label>
+            <input type="datetime-local" id="newsDate" name="date" required>
+          </div>
+          <div class="form-group">
+            <label for="newsStatus">状态</label>
+            <select id="newsStatus" name="status">
+              <option value="published">已发布</option>
+              <option value="draft">草稿</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="newsSummary">摘要</label>
+          <textarea id="newsSummary" name="summary" rows="3" placeholder="请输入新闻摘要..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="newsContent">内容 *</label>
+          <textarea id="newsContent" name="content" rows="8" placeholder="请输入新闻内容..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="newsImage">封面图片</label>
+          <input type="file" id="newsImage" name="image" accept="image/*">
+          <small>支持 JPG、PNG 格式，最大 2MB</small>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="cancel-btn" id="cancelBtn">取消</button>
+          <button type="submit" class="save-btn">保存</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="news.js"></script>
+</body>
+</html> 

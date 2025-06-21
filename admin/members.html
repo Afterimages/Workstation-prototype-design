@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>成员管理 - 认知与智能科学实验室</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+  <!-- 侧边栏 -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">认知与智能科学实验室</div>
+      <div class="subtitle">后台管理系统</div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">
+        <span class="nav-icon">📊</span>
+        <span class="nav-text">控制台</span>
+      </a>
+      <a href="achievements.html" class="nav-item">
+        <span class="nav-icon">🏆</span>
+        <span class="nav-text">成果管理</span>
+      </a>
+      <a href="news.html" class="nav-item">
+        <span class="nav-icon">📰</span>
+        <span class="nav-text">新闻管理</span>
+      </a>
+      <a href="members.html" class="nav-item active">
+        <span class="nav-icon">👥</span>
+        <span class="nav-text">成员管理</span>
+      </a>
+      <a href="projects.html" class="nav-item">
+        <span class="nav-icon">📋</span>
+        <span class="nav-text">项目管理</span>
+      </a>
+      <a href="messages.html" class="nav-item">
+        <span class="nav-icon">💬</span>
+        <span class="nav-text">留言管理</span>
+      </a>
+      <a href="applications.html" class="nav-item">
+        <span class="nav-icon">📝</span>
+        <span class="nav-text">申请管理</span>
+      </a>
+      <a href="settings.html" class="nav-item">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-text">系统设置</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="main-content">
+    <!-- 顶部导航 -->
+    <header class="admin-header">
+      <div class="header-left">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <h1>成员管理</h1>
+      </div>
+      <div class="header-right">
+        <div class="user-info">
+          <span class="username">管理员</span>
+          <button class="logout-btn" id="logoutBtn">退出</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 工具栏 -->
+    <section class="toolbar">
+      <div class="toolbar-left">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="搜索成员...">
+          <button class="search-btn">🔍</button>
+        </div>
+        <select id="roleFilter" class="filter-select">
+          <option value="">全部角色</option>
+          <option value="advisor">导师</option>
+          <option value="phd">博士生</option>
+          <option value="master">硕士生</option>
+          <option value="undergraduate">本科生</option>
+          <option value="researcher">研究员</option>
+        </select>
+        <select id="statusFilter" class="filter-select">
+          <option value="">全部状态</option>
+          <option value="active">在职</option>
+          <option value="graduated">已毕业</option>
+          <option value="visiting">访问学者</option>
+        </select>
+      </div>
+      <div class="toolbar-right">
+        <button class="add-btn" id="addMemberBtn">➕ 添加成员</button>
+      </div>
+    </section>
+
+    <!-- 成员列表 -->
+    <section class="content-section">
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>头像</th>
+              <th>姓名</th>
+              <th>角色</th>
+              <th>专业/方向</th>
+              <th>邮箱</th>
+              <th>状态</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="membersTableBody">
+            <tr>
+              <td>
+                <div class="member-avatar">
+                  <img src="../pic/head/head1.png" alt="张教授" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiM2YzNmZDMiLz4KPHN2ZyB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJ3aGl0ZSI+CjxwYXRoIGQ9Ik0xMiAxMmMyLjIxIDAgNC0xLjc5IDQtNHMtMS43OS00LTQtNC00IDEuNzktNCA0IDEuNzkgNCA0IDR6bTAgMmMtMi42NyAwLTggMS4zNC04IDR2MmgxNnYtMmMwLTIuNjYtNS4zMy00LTgtNHoiLz4KPC9zdmc+Cjwvc3ZnPgo='">
+                </div>
+              </td>
+              <td>张明华</td>
+              <td><span class="role-tag advisor">导师</span></td>
+              <td>认知科学</td>
+              <td>zhang@cislab.edu.cn</td>
+              <td><span class="status-badge active">在职</span></td>
+              <td>
+                <button class="action-btn edit" data-id="1">编辑</button>
+                <button class="action-btn delete" data-id="1">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="member-avatar">
+                  <img src="../pic/head/head1.png" alt="李博士" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiM2YzNmZDMiLz4KPHN2ZyB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJ3aGl0ZSI+CjxwYXRoIGQ9Ik0xMiAxMmMyLjIxIDAgNC0xLjc5IDQtNHMtMS43OS00LTQtNC00IDEuNzktNCA0IDEuNzkgNCA0IDR6bTAgMmMtMi42NyAwLTggMS4zNC04IDR2MmgxNnYtMmMwLTIuNjYtNS4zMy00LTgtNHoiLz4KPC9zdmc+Cjwvc3ZnPgo='">
+                </div>
+              </td>
+              <td>李思思</td>
+              <td><span class="role-tag phd">博士生</span></td>
+              <td>人工智能</td>
+              <td>li@cislab.edu.cn</td>
+              <td><span class="status-badge active">在职</span></td>
+              <td>
+                <button class="action-btn edit" data-id="2">编辑</button>
+                <button class="action-btn delete" data-id="2">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="member-avatar">
+                  <img src="../pic/head/head1.png" alt="王硕士" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiM2YzNmZDMiLz4KPHN2ZyB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJ3aGl0ZSI+CjxwYXRoIGQ9Ik0xMiAxMmMyLjIxIDAgNC0xLjc5IDQtNHMtMS43OS00LTQtNC00IDEuNzktNCA0IDEuNzkgNCA0IDR6bTAgMmMtMi42NyAwLTggMS4zNC04IDR2MmgxNnYtMmMwLTIuNjYtNS4zMy00LTgtNHoiLz4KPC9zdmc+Cjwvc3ZnPgo='">
+                </div>
+              </td>
+              <td>王浩然</td>
+              <td><span class="role-tag master">硕士生</span></td>
+              <td>机器学习</td>
+              <td>wang@cislab.edu.cn</td>
+              <td><span class="status-badge active">在职</span></td>
+              <td>
+                <button class="action-btn edit" data-id="3">编辑</button>
+                <button class="action-btn delete" data-id="3">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="member-avatar">
+                  <img src="../pic/head/head1.png" alt="陈本科" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiM2YzNmZDMiLz4KPHN2ZyB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJ3aGl0ZSI+CjxwYXRoIGQ9Ik0xMiAxMmMyLjIxIDAgNC0xLjc5IDQtNHMtMS43OS00LTQtNC00IDEuNzktNCA0IDEuNzkgNCA0IDR6bTAgMmMtMi42NyAwLTggMS4zNC04IDR2MmgxNnYtMmMwLTIuNjYtNS4zMy00LTgtNHoiLz4KPC9zdmc+Cjwvc3ZnPgo='">
+                </div>
+              </td>
+              <td>陈小雨</td>
+              <td><span class="role-tag undergraduate">本科生</span></td>
+              <td>计算机科学</td>
+              <td>chen@cislab.edu.cn</td>
+              <td><span class="status-badge active">在职</span></td>
+              <td>
+                <button class="action-btn edit" data-id="4">编辑</button>
+                <button class="action-btn delete" data-id="4">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="member-avatar">
+                  <img src="../pic/head/head1.png" alt="刘研究员" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiM2YzNmZDMiLz4KPHN2ZyB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJ3aGl0ZSI+CjxwYXRoIGQ9Ik0xMiAxMmMyLjIxIDAgNC0xLjc5IDQtNHMtMS43OS00LTQtNC00IDEuNzktNCA0IDEuNzkgNCA0IDR6bTAgMmMtMi42NyAwLTggMS4zNC04IDR2MmgxNnYtMmMwLTIuNjYtNS4zMy00LTgtNHoiLz4KPC9zdmc+Cjwvc3ZnPgo='">
+                </div>
+              </td>
+              <td>刘志强</td>
+              <td><span class="role-tag researcher">研究员</span></td>
+              <td>脑机接口</td>
+              <td>liu@cislab.edu.cn</td>
+              <td><span class="status-badge visiting">访问学者</span></td>
+              <td>
+                <button class="action-btn edit" data-id="5">编辑</button>
+                <button class="action-btn delete" data-id="5">删除</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- 添加/编辑成员弹窗 -->
+  <div class="modal" id="memberModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle">添加成员</h2>
+        <button class="close-btn" id="closeModal">&times;</button>
+      </div>
+      <form id="memberForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="memberName">姓名 *</label>
+            <input type="text" id="memberName" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="memberRole">角色 *</label>
+            <select id="memberRole" name="role" required>
+              <option value="">请选择角色</option>
+              <option value="advisor">导师</option>
+              <option value="phd">博士生</option>
+              <option value="master">硕士生</option>
+              <option value="undergraduate">本科生</option>
+              <option value="researcher">研究员</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="memberMajor">专业/方向 *</label>
+            <input type="text" id="memberMajor" name="major" required>
+          </div>
+          <div class="form-group">
+            <label for="memberStatus">状态</label>
+            <select id="memberStatus" name="status">
+              <option value="active">在职</option>
+              <option value="graduated">已毕业</option>
+              <option value="visiting">访问学者</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="memberEmail">邮箱 *</label>
+            <input type="email" id="memberEmail" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="memberPhone">电话</label>
+            <input type="tel" id="memberPhone" name="phone">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="memberAvatar">头像</label>
+          <input type="file" id="memberAvatar" name="avatar" accept="image/*">
+          <small>支持 JPG、PNG 格式，建议尺寸 200x200px</small>
+        </div>
+        <div class="form-group">
+          <label for="memberBio">个人简介</label>
+          <textarea id="memberBio" name="bio" rows="4" placeholder="请输入个人简介..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="memberResearch">研究方向</label>
+          <textarea id="memberResearch" name="research" rows="3" placeholder="请输入研究方向..."></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="cancel-btn" id="cancelBtn">取消</button>
+          <button type="submit" class="save-btn">保存</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="members.js"></script>
+</body>
+</html> 
