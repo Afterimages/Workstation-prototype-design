@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>相关项目动态 - 认知与智能科学实验室</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/images.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 引入通用导航栏 -->
+  <div id="header-container"></div>
+
+  <section class="page-header">
+    <div class="container">
+      <h1 id="projects-title">相关项目动态</h1>
+      <p id="projects-desc">展示实验室各科研方向的最新项目进展与动态</p>
+    </div>
+  </section>
+
+  <!-- 分类筛选 -->
+  <section class="section">
+    <div class="container">
+      <div class="filter-bar">
+        <select id="directionFilter">
+          <option value="">全部方向</option>
+          <option value="认知建模">认知建模</option>
+          <option value="人工智能">人工智能</option>
+          <option value="脑机接口">脑机接口</option>
+          <option value="智能感知">智能感知</option>
+        </select>
+        <select id="statusFilter">
+          <option value="">全部状态</option>
+          <option value="planning">规划中</option>
+          <option value="ongoing">进行中</option>
+          <option value="completed">已完成</option>
+        </select>
+      </div>
+      <div class="projects-container">
+        <div class="projects-list" id="projects-list"></div>
+        <div class="pagination" id="pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 项目详情弹窗，风格与新闻详情一致 -->
+  <div class="project-modal" id="projectModal" style="display:none;">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <div class="modal-body" id="modal-body">
+        <!-- 动态填充 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 引入通用页脚 -->
+  <div id="footer-container"></div>
+
+  <script src="js/common.js"></script>
+  <script src="js/component-loader.js"></script>
+  <script src="js/image-loader.js"></script>
+  <script src="js/image-checker.js"></script>
+  <script src="projects.js"></script>
+</body>
+</html> 

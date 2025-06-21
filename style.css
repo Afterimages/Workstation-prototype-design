@@ -496,6 +496,24 @@ body {
   }
 }
 
+/* 新闻详情弹窗内容可滚动 */
+.news-modal .modal-content {
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.news-modal .modal-body {
+  overflow-y: auto;
+  max-height: 70vh;
+  padding-right: 4px;
+}
+
+@media (max-width: 600px) {
+  .news-modal .modal-content { max-height: 98vh; }
+  .news-modal .modal-body { max-height: 75vh; }
+}
+
 .contact-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -951,4 +969,177 @@ body {
   .login-bg {
     display: none;
   }
+}
+
+/* 项目动态页卡片风格 */
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+.project-item {
+  display: flex;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(120, 80, 180, 0.08);
+  padding: 1.5em 2em;
+  align-items: center;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+.project-item:hover {
+  box-shadow: 0 4px 24px rgba(120, 80, 180, 0.16);
+}
+.project-progress {
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 2em;
+}
+.project-progress .progress-bar {
+  width: 40px;
+  height: 8px;
+  background: #eee;
+  border-radius: 4px;
+  margin-bottom: 0.5em;
+  overflow: hidden;
+}
+.project-progress .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #a259ff, #6a4cff);
+  border-radius: 4px;
+}
+.project-progress .progress-text {
+  font-size: 0.95em;
+  color: #a259ff;
+  font-weight: bold;
+}
+.project-content {
+  flex: 1;
+}
+.project-content h3 {
+  margin: 0 0 0.5em 0;
+  font-size: 1.2em;
+  color: #6a4cff;
+}
+.project-content p {
+  margin: 0 0 0.7em 0;
+  color: #444;
+}
+.project-meta {
+  display: flex;
+  gap: 1.2em;
+  font-size: 0.98em;
+  color: #888;
+  flex-wrap: wrap;
+}
+.project-status {
+  padding: 0.1em 0.8em;
+  border-radius: 1em;
+  font-size: 0.95em;
+  color: #fff;
+  background: #a259ff;
+  margin-left: 0.5em;
+}
+.project-status.completed { background: #4caf50; }
+.project-status.ongoing { background: #a259ff; }
+.project-status.planning { background: #ff9800; }
+.project-status.suspended { background: #bdbdbd; }
+
+/* 分页按钮 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+  margin: 2em 0 0 0;
+}
+.page-btn {
+  background: #f3f0fa;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5em 1.2em;
+  color: #6a4cff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.page-btn.active, .page-btn:hover {
+  background: #a259ff;
+  color: #fff;
+}
+
+/* 项目详情弹窗 */
+.project-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0; right: 0; bottom: 0;
+  background: rgba(60, 40, 100, 0.18);
+  justify-content: center;
+  align-items: center;
+}
+.project-modal .modal-content {
+  background: #fff;
+  border-radius: 14px;
+  max-width: 520px;
+  width: 92vw;
+  margin: 0 auto;
+  padding: 2em 2.2em 1.5em 2.2em;
+  box-shadow: 0 8px 32px rgba(120, 80, 180, 0.18);
+  position: relative;
+}
+.project-modal .close-btn {
+  position: absolute;
+  right: 1.2em;
+  top: 1.2em;
+  font-size: 1.6em;
+  color: #a259ff;
+  cursor: pointer;
+}
+.project-modal .modal-body h2 {
+  margin: 0 0 0.5em 0;
+  color: #6a4cff;
+  font-size: 1.3em;
+}
+.project-modal .modal-meta {
+  display: flex;
+  gap: 1.2em;
+  color: #888;
+  font-size: 0.98em;
+  margin-bottom: 1em;
+  flex-wrap: wrap;
+}
+.project-modal .modal-progress {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 1em;
+}
+.project-modal .modal-progress .progress-bar {
+  width: 80px;
+  height: 10px;
+  background: #eee;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.project-modal .modal-progress .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #a259ff, #6a4cff);
+  border-radius: 5px;
+}
+.project-modal .modal-progress .progress-text {
+  font-size: 1em;
+  color: #a259ff;
+  font-weight: bold;
+}
+.project-modal .modal-desc {
+  color: #444;
+  font-size: 1.05em;
+  white-space: pre-wrap;
+}
+@media (max-width: 600px) {
+  .project-item { flex-direction: column; align-items: flex-start; padding: 1em; }
+  .project-progress { margin-right: 0; margin-bottom: 1em; }
+  .project-modal .modal-content { padding: 1.2em 0.7em; }
 } 

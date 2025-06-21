@@ -4,6 +4,7 @@ const newsDetails = {
     title: '实验室荣获省级科技进步奖',
     date: '2024-06-01',
     category: '获奖',
+    cover: './pic/1.jpg',
     content: `
       <p>我实验室在认知科学与人工智能交叉领域的研究成果获得省级科技进步一等奖，这是对我实验室科研实力的充分肯定。</p>
       <p>该奖项主要表彰了实验室在以下方面的突出贡献：</p>
@@ -20,6 +21,7 @@ const newsDetails = {
     title: '新一代脑机接口系统发布',
     date: '2024-05-20',
     category: '技术发布',
+    cover: './pic/2.jpg',
     content: `
       <p>实验室成功研发新一代脑机接口系统，在信号处理精度和响应速度方面取得重大突破，为神经康复领域带来新的可能。</p>
       <p>新系统的主要特点包括：</p>
@@ -37,6 +39,7 @@ const newsDetails = {
     title: '团队成员论文被顶会录用',
     date: '2024-05-10',
     category: '学术成果',
+    cover: './pic/3.jpg',
     content: `
       <p>实验室博士生张明的论文《基于深度学习的认知过程建模》被国际顶级会议NeurIPS 2024录用，展现了实验室在学术研究方面的实力。</p>
       <p>该论文的主要贡献包括：</p>
@@ -53,6 +56,7 @@ const newsDetails = {
     title: '举办智能科学前沿讲座',
     date: '2024-04-28',
     category: '学术活动',
+    cover: './pic/4.jpg',
     content: `
       <p>实验室邀请国际知名学者举办智能科学前沿讲座，吸引了校内外200余名师生参加，促进了学术交流与合作。</p>
       <p>讲座邀请了以下知名学者：</p>
@@ -68,6 +72,7 @@ const newsDetails = {
     title: '实验室开放日活动圆满结束',
     date: '2024-04-15',
     category: '活动',
+    cover: './pic/5.jpg',
     content: `
       <p>实验室成功举办开放日活动，向公众展示了最新的科研成果和技术应用，增强了社会对人工智能技术的认知。</p>
       <p>开放日活动包括：</p>
@@ -84,6 +89,7 @@ const newsDetails = {
     title: '与知名企业签署合作协议',
     date: '2024-03-30',
     category: '合作',
+    cover: './pic/6.jpg',
     content: `
       <p>实验室与某知名科技企业签署战略合作协议，将在智能医疗、教育AI等领域开展深度合作，推动产学研融合发展。</p>
       <p>合作内容包括：</p>
@@ -113,6 +119,14 @@ newsItems.forEach(item => {
     document.getElementById('modalDate').textContent = newsData.date;
     document.getElementById('modalCategory').textContent = newsData.category;
     document.getElementById('modalContent').innerHTML = newsData.content;
+    // 新增封面展示
+    const coverEl = document.getElementById('modalCover');
+    if(newsData.cover){
+      coverEl.src = newsData.cover;
+      coverEl.style.display = '';
+    }else{
+      coverEl.style.display = 'none';
+    }
     
     modal.style.display = 'block';
   });
