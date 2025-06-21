@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>申请管理 - 认知与智能科学实验室</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+  <!-- 侧边栏 -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">认知与智能科学实验室</div>
+      <div class="subtitle">后台管理系统</div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">
+        <span class="nav-icon">📊</span>
+        <span class="nav-text">控制台</span>
+      </a>
+      <a href="achievements.html" class="nav-item">
+        <span class="nav-icon">🏆</span>
+        <span class="nav-text">成果管理</span>
+      </a>
+      <a href="news.html" class="nav-item">
+        <span class="nav-icon">📰</span>
+        <span class="nav-text">新闻管理</span>
+      </a>
+      <a href="members.html" class="nav-item">
+        <span class="nav-icon">👥</span>
+        <span class="nav-text">成员管理</span>
+      </a>
+      <a href="projects.html" class="nav-item">
+        <span class="nav-icon">📋</span>
+        <span class="nav-text">项目管理</span>
+      </a>
+      <a href="messages.html" class="nav-item">
+        <span class="nav-icon">💬</span>
+        <span class="nav-text">留言管理</span>
+      </a>
+      <a href="applications.html" class="nav-item active">
+        <span class="nav-icon">📝</span>
+        <span class="nav-text">申请管理</span>
+      </a>
+      <a href="settings.html" class="nav-item">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-text">系统设置</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="main-content">
+    <!-- 顶部导航 -->
+    <header class="admin-header">
+      <div class="header-left">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <h1>申请管理</h1>
+      </div>
+      <div class="header-right">
+        <div class="user-info">
+          <span class="username">管理员</span>
+          <button class="logout-btn" id="logoutBtn">退出</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 工具栏 -->
+    <section class="toolbar">
+      <div class="toolbar-left">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="搜索申请人...">
+          <button class="search-btn">🔍</button>
+        </div>
+        <select id="statusFilter" class="filter-select">
+          <option value="">全部状态</option>
+          <option value="pending">待审核</option>
+          <option value="approved">已通过</option>
+          <option value="rejected">已拒绝</option>
+          <option value="interview">面试中</option>
+          <option value="accepted">已录用</option>
+        </select>
+        <select id="typeFilter" class="filter-select">
+          <option value="">全部类型</option>
+          <option value="internship">实习申请</option>
+          <option value="graduate">研究生申请</option>
+          <option value="postdoc">博士后申请</option>
+          <option value="visiting">访问学者申请</option>
+          <option value="cooperation">合作申请</option>
+        </select>
+      </div>
+      <div class="toolbar-right">
+        <button class="action-btn" id="batchApproveBtn">✅ 批量通过</button>
+        <button class="action-btn" id="exportBtn">📤 导出申请</button>
+      </div>
+    </section>
+
+    <!-- 申请列表 -->
+    <section class="content-section">
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th><input type="checkbox" id="selectAll"></th>
+              <th>申请人</th>
+              <th>申请类型</th>
+              <th>申请职位</th>
+              <th>申请时间</th>
+              <th>状态</th>
+              <th>优先级</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="applicationsTableBody">
+            <tr class="application-row pending" data-id="1">
+              <td><input type="checkbox" class="select-item" data-id="1"></td>
+              <td>
+                <div class="applicant-info">
+                  <div class="applicant-avatar">张</div>
+                  <div class="applicant-details">
+                    <div class="applicant-name">张明</div>
+                    <div class="applicant-email">zhangming@email.com</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="type-tag internship">实习申请</span></td>
+              <td>机器学习实习生</td>
+              <td>2024-05-20 14:30</td>
+              <td><span class="status-badge pending">待审核</span></td>
+              <td><span class="priority-badge high">高</span></td>
+              <td>
+                <button class="action-btn view" data-id="1">查看</button>
+                <button class="action-btn approve" data-id="1">通过</button>
+                <button class="action-btn reject" data-id="1">拒绝</button>
+              </td>
+            </tr>
+            <tr class="application-row interview" data-id="2">
+              <td><input type="checkbox" class="select-item" data-id="2"></td>
+              <td>
+                <div class="applicant-info">
+                  <div class="applicant-avatar">李</div>
+                  <div class="applicant-details">
+                    <div class="applicant-name">李华</div>
+                    <div class="applicant-email">lihua@email.com</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="type-tag graduate">研究生申请</span></td>
+              <td>认知科学硕士</td>
+              <td>2024-05-19 16:45</td>
+              <td><span class="status-badge interview">面试中</span></td>
+              <td><span class="priority-badge medium">中</span></td>
+              <td>
+                <button class="action-btn view" data-id="2">查看</button>
+                <button class="action-btn approve" data-id="2">通过</button>
+                <button class="action-btn reject" data-id="2">拒绝</button>
+              </td>
+            </tr>
+            <tr class="application-row approved" data-id="3">
+              <td><input type="checkbox" class="select-item" data-id="3"></td>
+              <td>
+                <div class="applicant-info">
+                  <div class="applicant-avatar">王</div>
+                  <div class="applicant-details">
+                    <div class="applicant-name">王强</div>
+                    <div class="applicant-email">wangqiang@email.com</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="type-tag postdoc">博士后申请</span></td>
+              <td>人工智能博士后</td>
+              <td>2024-05-18 09:15</td>
+              <td><span class="status-badge approved">已通过</span></td>
+              <td><span class="priority-badge high">高</span></td>
+              <td>
+                <button class="action-btn view" data-id="3">查看</button>
+                <button class="action-btn accept" data-id="3">录用</button>
+                <button class="action-btn reject" data-id="3">拒绝</button>
+              </td>
+            </tr>
+            <tr class="application-row rejected" data-id="4">
+              <td><input type="checkbox" class="select-item" data-id="4"></td>
+              <td>
+                <div class="applicant-info">
+                  <div class="applicant-avatar">赵</div>
+                  <div class="applicant-details">
+                    <div class="applicant-name">赵敏</div>
+                    <div class="applicant-email">zhaomin@email.com</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="type-tag visiting">访问学者申请</span></td>
+              <td>认知心理学访问学者</td>
+              <td>2024-05-17 11:20</td>
+              <td><span class="status-badge rejected">已拒绝</span></td>
+              <td><span class="priority-badge low">低</span></td>
+              <td>
+                <button class="action-btn view" data-id="4">查看</button>
+                <button class="action-btn approve" data-id="4">通过</button>
+                <button class="action-btn reject" data-id="4">拒绝</button>
+              </td>
+            </tr>
+            <tr class="application-row accepted" data-id="5">
+              <td><input type="checkbox" class="select-item" data-id="5"></td>
+              <td>
+                <div class="applicant-info">
+                  <div class="applicant-avatar">孙</div>
+                  <div class="applicant-details">
+                    <div class="applicant-name">孙丽</div>
+                    <div class="applicant-email">sunli@email.com</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="type-tag cooperation">合作申请</span></td>
+              <td>科研合作项目</td>
+              <td>2024-05-16 13:30</td>
+              <td><span class="status-badge accepted">已录用</span></td>
+              <td><span class="priority-badge medium">中</span></td>
+              <td>
+                <button class="action-btn view" data-id="5">查看</button>
+                <button class="action-btn approve" data-id="5">通过</button>
+                <button class="action-btn reject" data-id="5">拒绝</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- 查看申请详情弹窗 -->
+  <div class="modal" id="viewApplicationModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>申请详情</h2>
+        <button class="close-btn" id="closeViewModal">&times;</button>
+      </div>
+      <div class="application-detail" id="applicationDetail">
+        <div class="applicant-profile">
+          <div class="profile-header">
+            <div class="profile-avatar" id="viewAvatar"></div>
+            <div class="profile-info">
+              <h3 id="viewName"></h3>
+              <p id="viewEmail"></p>
+              <p id="viewPhone"></p>
+            </div>
+            <div class="profile-status">
+              <span class="status-badge" id="viewStatus"></span>
+              <span class="priority-badge" id="viewPriority"></span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="application-info">
+          <div class="info-section">
+            <h4>申请信息</h4>
+            <div class="info-grid">
+              <div class="info-item">
+                <span class="label">申请类型：</span>
+                <span class="value" id="viewType"></span>
+              </div>
+              <div class="info-item">
+                <span class="label">申请职位：</span>
+                <span class="value" id="viewPosition"></span>
+              </div>
+              <div class="info-item">
+                <span class="label">申请时间：</span>
+                <span class="value" id="viewTime"></span>
+              </div>
+              <div class="info-item">
+                <span class="label">期望开始时间：</span>
+                <span class="value" id="viewStartTime"></span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="info-section">
+            <h4>教育背景</h4>
+            <div class="education-info" id="viewEducation"></div>
+          </div>
+          
+          <div class="info-section">
+            <h4>研究经历</h4>
+            <div class="research-info" id="viewResearch"></div>
+          </div>
+          
+          <div class="info-section">
+            <h4>申请动机</h4>
+            <div class="motivation-text" id="viewMotivation"></div>
+          </div>
+          
+          <div class="info-section">
+            <h4>附件材料</h4>
+            <div class="attachments" id="viewAttachments"></div>
+          </div>
+          
+          <div class="info-section" id="viewReview" style="display: none;">
+            <h4>审核意见</h4>
+            <div class="review-info" id="viewReviewContent"></div>
+            <div class="review-time" id="viewReviewTime"></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="cancel-btn" id="closeViewBtn">关闭</button>
+        <button class="approve-btn" id="approveFromViewBtn">通过申请</button>
+        <button class="reject-btn" id="rejectFromViewBtn">拒绝申请</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 审核申请弹窗 -->
+  <div class="modal" id="reviewApplicationModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="reviewTitle">审核申请</h2>
+        <button class="close-btn" id="closeReviewModal">&times;</button>
+      </div>
+      <form id="reviewForm">
+        <div class="review-info">
+          <div class="info-row">
+            <span class="label">申请人：</span>
+            <span class="value" id="reviewName"></span>
+          </div>
+          <div class="info-row">
+            <span class="label">申请职位：</span>
+            <span class="value" id="reviewPosition"></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="reviewDecision">审核决定 *</label>
+          <select id="reviewDecision" name="decision" required>
+            <option value="">请选择审核结果</option>
+            <option value="approved">通过</option>
+            <option value="rejected">拒绝</option>
+            <option value="interview">安排面试</option>
+            <option value="accepted">直接录用</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="reviewComment">审核意见 *</label>
+          <textarea id="reviewComment" name="comment" rows="6" placeholder="请输入审核意见..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="reviewScore">评分 (1-10)</label>
+          <input type="number" id="reviewScore" name="score" min="1" max="10" placeholder="请输入评分">
+        </div>
+        <div class="form-actions">
+          <button type="button" class="cancel-btn" id="cancelReviewBtn">取消</button>
+          <button type="submit" class="save-btn">提交审核</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="applications.js"></script>
+</body>
+</html> 
