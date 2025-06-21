@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新闻动态 - 认知与智能科学实验室</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header class="navbar">
+    <div class="logo">认知与智能科学实验室</div>
+    <nav>
+      <a href="index.html">首页</a>
+      <a href="about.html">实验室简介</a>
+      <a href="directions.html">科研方向</a>
+      <a href="achievements.html">成果展示</a>
+      <a href="news.html" class="active">新闻动态</a>
+      <a href="contact.html">联系我们</a>
+      <a href="join.html">加入我们</a>
+    </nav>
+    <button id="lang-switch">EN</button>
+  </header>
+
+  <main class="section" id="news">
+    <h2>新闻动态</h2>
+    <div class="news-container">
+      <div class="news-list">
+        <div class="news-item" data-id="1">
+          <div class="news-date">2024-06-01</div>
+          <div class="news-content">
+            <h3>实验室荣获省级科技进步奖</h3>
+            <p>我实验室在认知科学与人工智能交叉领域的研究成果获得省级科技进步一等奖，这是对我实验室科研实力的充分肯定。</p>
+            <div class="news-meta">
+              <span class="news-category">获奖</span>
+              <span class="news-views">阅读 156</span>
+            </div>
+          </div>
+        </div>
+        <div class="news-item" data-id="2">
+          <div class="news-date">2024-05-20</div>
+          <div class="news-content">
+            <h3>新一代脑机接口系统发布</h3>
+            <p>实验室成功研发新一代脑机接口系统，在信号处理精度和响应速度方面取得重大突破，为神经康复领域带来新的可能。</p>
+            <div class="news-meta">
+              <span class="news-category">技术发布</span>
+              <span class="news-views">阅读 203</span>
+            </div>
+          </div>
+        </div>
+        <div class="news-item" data-id="3">
+          <div class="news-date">2024-05-10</div>
+          <div class="news-content">
+            <h3>团队成员论文被顶会录用</h3>
+            <p>实验室博士生张明的论文《基于深度学习的认知过程建模》被国际顶级会议NeurIPS 2024录用，展现了实验室在学术研究方面的实力。</p>
+            <div class="news-meta">
+              <span class="news-category">学术成果</span>
+              <span class="news-views">阅读 89</span>
+            </div>
+          </div>
+        </div>
+        <div class="news-item" data-id="4">
+          <div class="news-date">2024-04-28</div>
+          <div class="news-content">
+            <h3>举办智能科学前沿讲座</h3>
+            <p>实验室邀请国际知名学者举办智能科学前沿讲座，吸引了校内外200余名师生参加，促进了学术交流与合作。</p>
+            <div class="news-meta">
+              <span class="news-category">学术活动</span>
+              <span class="news-views">阅读 134</span>
+            </div>
+          </div>
+        </div>
+        <div class="news-item" data-id="5">
+          <div class="news-date">2024-04-15</div>
+          <div class="news-content">
+            <h3>实验室开放日活动圆满结束</h3>
+            <p>实验室成功举办开放日活动，向公众展示了最新的科研成果和技术应用，增强了社会对人工智能技术的认知。</p>
+            <div class="news-meta">
+              <span class="news-category">活动</span>
+              <span class="news-views">阅读 178</span>
+            </div>
+          </div>
+        </div>
+        <div class="news-item" data-id="6">
+          <div class="news-date">2024-03-30</div>
+          <div class="news-content">
+            <h3>与知名企业签署合作协议</h3>
+            <p>实验室与某知名科技企业签署战略合作协议，将在智能医疗、教育AI等领域开展深度合作，推动产学研融合发展。</p>
+            <div class="news-meta">
+              <span class="news-category">合作</span>
+              <span class="news-views">阅读 95</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pagination">
+        <button class="page-btn active" data-page="1">1</button>
+        <button class="page-btn" data-page="2">2</button>
+        <button class="page-btn" data-page="3">3</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- 新闻详情弹窗 -->
+  <div class="news-modal" id="newsModal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div class="modal-body">
+        <h2 id="modalTitle"></h2>
+        <div class="modal-meta">
+          <span id="modalDate"></span>
+          <span id="modalCategory"></span>
+        </div>
+        <div id="modalContent"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div>联系方式：lab@cislab.edu.cn | 地址：XX大学XX楼XX室</div>
+    <div>© 2024 认知与智能科学实验室 | 粤ICP备xxxx号</div>
+    <div><button id="to-top">返回顶部</button></div>
+  </footer>
+  <script src="news.js"></script>
+</body>
+</html> 
