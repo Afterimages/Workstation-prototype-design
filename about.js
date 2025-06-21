@@ -31,4 +31,164 @@ langSwitch.onclick = () => {
   document.querySelector('.footer div').textContent = isEN ? 'Contact: lab@cislab.edu.cn | Address: XX University, XX Building, Room XX' : '联系方式：lab@cislab.edu.cn | 地址：XX大学XX楼XX室';
   document.querySelector('.footer').children[1].textContent = isEN ? '© 2024 Cognitive & Intelligent Science Lab | ICP xxxxx' : '© 2024 认知与智能科学实验室 | 粤ICP备xxxx号';
   document.getElementById('to-top').textContent = isEN ? 'Back to Top' : '返回顶部';
-}; 
+};
+
+// 实验室介绍页面功能脚本
+document.addEventListener('DOMContentLoaded', function() {
+    // 引入图片加载器
+    const script = document.createElement('script');
+    script.src = 'js/image-loader.js';
+    document.head.appendChild(script);
+
+    // 统计数字动画
+    function animateNumbers() {
+        const statNumbers = document.querySelectorAll('.stat-number');
+        
+        statNumbers.forEach(stat => {
+            const target = parseInt(stat.textContent);
+            const duration = 2000; // 2秒动画
+            const step = target / (duration / 16); // 60fps
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                stat.textContent = Math.floor(current) + '+';
+            }, 16);
+        });
+    }
+
+    // 图片加载完成后的回调
+    function onImagesLoaded() {
+        // 为环境图片添加点击放大效果
+        const envCards = document.querySelectorAll('.env-card img');
+        envCards.forEach(img => {
+            img.addEventListener('click', function() {
+                showImageModal(this.src, this.alt);
+            });
+        });
+    }
+
+    // 图片模态框
+    function showImageModal(src, alt) {
+        const modal = document.createElement('div');
+        modal.className = 'image-modal';
+        modal.innerHTML = `
+            <div class="image-modal-content">
+                <span class="image-modal-close">&times;</span>
+                <img src="${src}" alt="${alt}">
+                <p>${alt}</p>
+            </div>
+        `;
+        
+        // 添加样式
+        const style = document.createElement('style');
+        style.textContent = `
+            .image-modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+            .image-modal.show {
+                opacity: 1;
+            }
+            .image-modal-content {
+                position: relative;
+                max-width: 90%;
+                max-height: 90%;
+                background: white;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            .image-modal-content img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+            .image-modal-content p {
+                padding: 16px;
+                margin: 0;
+                text-align: center;
+                color: #333;
+            }
+            .image-modal-close {
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                font-size: 24px;
+                color: white;
+                cursor: pointer;
+                background: rgba(0,0,0,0.5);
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        `;
+        document.head.appendChild(style);
+        
+        document.body.appendChild(modal);
+        
+        // 显示动画
+        setTimeout(() => modal.classList.add('show'), 10);
+        
+        // 关闭事件
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal || e.target.classList.contains('image-modal-close')) {
+                modal.classList.remove('show');
+                setTimeout(() => {
+                    document.body.removeChild(modal);
+                    document.head.removeChild(style);
+                }, 300);
+            }
+        });
+    }
+
+    // 滚动动画
+    function initScrollAnimations() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        // 观察需要动画的元素
+        const animateElements = document.querySelectorAll('.about-content, .environment-grid, .stat-card');
+        animateElements.forEach(el => {
+            observer.observe(el);
+        });
+    }
+
+    // 初始化
+    setTimeout(() => {
+        animateNumbers();
+        initScrollAnimations();
+        
+        // 等待图片加载完成后初始化图片相关功能
+        if (window.ImageLoader) {
+            onImagesLoaded();
+        } else {
+            // 降级处理
+            setTimeout(onImagesLoaded, 1000);
+        }
+    }, 500);
+}); 

@@ -54,17 +54,7 @@ body {
   box-shadow: 0 4px 24px rgba(108,63,211,0.10);
   background: #fff;
 }
-.carousel-inner {
-  display: flex;
-  transition: transform 0.5s cubic-bezier(.4,0,.2,1);
-}
-.carousel-inner img {
-  width: 100vw;
-  max-width: 1200px;
-  height: 340px;
-  object-fit: cover;
-  border-radius: 18px;
-}
+
 .carousel-btn {
   position: absolute;
   top: 50%;
