@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{PAGE_TITLE}} - 认知与智能科学实验室</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="style.css">
+  {{EXTRA_CSS}}
+</head>
+<body>
+  <!-- 引入通用导航栏 -->
+  <div id="header-container"></div>
+
+  <!-- 页面标题 -->
+  <section class="page-header">
+    <div class="container">
+      <h1>{{PAGE_HEADING}}</h1>
+      <p>{{PAGE_SUBTITLE}}</p>
+    </div>
+  </section>
+
+  <!-- 页面主要内容 -->
+  <main class="section">
+    <div class="container">
+      {{PAGE_CONTENT}}
+    </div>
+  </main>
+
+  <!-- 引入通用页脚 -->
+  <div id="footer-container"></div>
+
+  <script src="js/common.js"></script>
+  <script src="js/component-loader.js"></script>
+  {{EXTRA_JS}}
+</body>
+</html> 

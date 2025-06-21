@@ -4,55 +4,129 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>科研方向 - 认知与智能科学实验室</title>
+  <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- 顶部导航 -->
-  <header class="navbar">
-    <div class="logo">认知与智能科学实验室</div>
-    <nav>
-      <a href="index.html">首页</a>
-      <a href="about.html">实验室简介</a>
-      <a href="directions.html" class="active">科研方向</a>
-      <a href="achievements.html">成果展示</a>
-      <a href="news.html">新闻动态</a>
-      <a href="contact.html">联系我们</a>
-      <a href="join.html">加入我们</a>
-    </nav>
-    <button id="lang-switch">EN</button>
-  </header>
+  <!-- 引入通用导航栏 -->
+  <div id="header-container"></div>
 
-  <main class="section" id="directions">
-    <h2>科研方向</h2>
-    <div class="directions-list">
-      <div class="direction-card">
-        <h3>认知建模</h3>
-        <p>研究人类认知过程的理论建模与仿真，结合神经科学、心理学与人工智能方法，探索认知机制与智能行为的本质。</p>
-        <a href="#" class="project-link">相关项目：认知过程建模平台开发</a>
-      </div>
-      <div class="direction-card">
-        <h3>人工智能</h3>
-        <p>聚焦机器学习、深度学习、自然语言处理等领域，开发智能算法与系统，推动AI在医疗、教育、工业等行业的应用。</p>
-        <a href="#" class="project-link">相关项目：智能诊断系统、教育AI助手</a>
-      </div>
-      <div class="direction-card">
-        <h3>脑机接口</h3>
-        <p>开展脑电信号采集、处理与解码技术研究，实现人脑与外部设备的高效交互，助力神经康复与智能控制。</p>
-        <a href="#" class="project-link">相关项目：脑控假肢、神经康复训练系统</a>
-      </div>
-      <div class="direction-card">
-        <h3>智能感知</h3>
-        <p>研究多模态感知与融合技术，包括视觉、听觉、触觉等，提升智能系统对复杂环境的理解与适应能力。</p>
-        <a href="#" class="project-link">相关项目：多模态感知机器人、环境感知平台</a>
+  <!-- 页面标题 -->
+  <section class="page-header">
+    <div class="container">
+      <h1 data-i18n="nav.directions">科研方向</h1>
+      <p>探索认知科学前沿，推动智能技术创新</p>
+    </div>
+  </section>
+
+  <!-- 研究方向列表 -->
+  <section class="section">
+    <div class="container">
+      <div class="directions-list">
+        <div class="direction-card">
+          <div class="direction-icon">
+            <img src="pic/icon/brain.png" alt="认知建模">
+          </div>
+          <h3>认知建模</h3>
+          <p>探索人类认知过程的建模与仿真，包括注意力、记忆、决策等认知功能的计算模型构建。</p>
+          <div class="direction-details">
+            <h4>研究内容：</h4>
+            <ul>
+              <li>认知过程计算建模</li>
+              <li>注意力机制研究</li>
+              <li>记忆系统仿真</li>
+              <li>决策过程分析</li>
+            </ul>
+            <a href="#" class="project-link">查看相关项目 →</a>
+          </div>
+        </div>
+
+        <div class="direction-card">
+          <div class="direction-icon">
+            <img src="pic/icon/ai.png" alt="人工智能">
+          </div>
+          <h3>人工智能</h3>
+          <p>机器学习、深度学习与智能系统开发，构建具有认知能力的智能算法和系统。</p>
+          <div class="direction-details">
+            <h4>研究内容：</h4>
+            <ul>
+              <li>深度学习算法优化</li>
+              <li>强化学习应用</li>
+              <li>自然语言处理</li>
+              <li>计算机视觉</li>
+            </ul>
+            <a href="#" class="project-link">查看相关项目 →</a>
+          </div>
+        </div>
+
+        <div class="direction-card">
+          <div class="direction-icon">
+            <img src="pic/icon/bci.png" alt="脑机接口">
+          </div>
+          <h3>脑机接口</h3>
+          <p>脑信号采集与智能交互技术，实现大脑与计算机的直接通信和控制。</p>
+          <div class="direction-details">
+            <h4>研究内容：</h4>
+            <ul>
+              <li>脑电信号处理</li>
+              <li>神经反馈系统</li>
+              <li>脑控设备开发</li>
+              <li>脑信号解码</li>
+            </ul>
+            <a href="#" class="project-link">查看相关项目 →</a>
+          </div>
+        </div>
+
+        <div class="direction-card">
+          <div class="direction-icon">
+            <img src="pic/icon/sensor.png" alt="智能感知">
+          </div>
+          <h3>智能感知</h3>
+          <p>多模态感知与智能信息处理，融合视觉、听觉、触觉等多种感知信息。</p>
+          <div class="direction-details">
+            <h4>研究内容：</h4>
+            <ul>
+              <li>多模态信息融合</li>
+              <li>传感器网络优化</li>
+              <li>环境感知算法</li>
+              <li>智能交互系统</li>
+            </ul>
+            <a href="#" class="project-link">查看相关项目 →</a>
+          </div>
+        </div>
       </div>
     </div>
-  </main>
+  </section>
 
-  <footer class="footer">
-    <div>联系方式：lab@cislab.edu.cn | 地址：XX大学XX楼XX室</div>
-    <div>© 2024 认知与智能科学实验室 | 粤ICP备xxxx号</div>
-    <div><button id="to-top">返回顶部</button></div>
-  </footer>
+  <!-- 研究设施 -->
+  <section class="section">
+    <div class="container">
+      <h2>研究设施</h2>
+      <div class="facilities-grid">
+        <div class="facility-card">
+          <img src="pic/4.jpg" alt="脑电实验室">
+          <h3>脑电实验室</h3>
+          <p>配备64导脑电设备，支持高精度脑信号采集和分析</p>
+        </div>
+        <div class="facility-card">
+          <img src="pic/5.jpg" alt="眼动实验室">
+          <h3>眼动实验室</h3>
+          <p>高精度眼动仪，用于注意力研究和视觉认知分析</p>
+        </div>
+        <div class="facility-card">
+          <img src="pic/6.jpg" alt="VR实验室">
+          <h3>VR实验室</h3>
+          <p>虚拟现实设备，支持沉浸式认知实验和交互研究</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 引入通用页脚 -->
+  <div id="footer-container"></div>
+
+  <script src="js/common.js"></script>
+  <script src="js/component-loader.js"></script>
   <script src="directions.js"></script>
 </body>
 </html> 
