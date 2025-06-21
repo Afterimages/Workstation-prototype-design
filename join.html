@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>加入我们 - 认知与智能科学实验室</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header class="navbar">
+    <div class="logo">认知与智能科学实验室</div>
+    <nav>
+      <a href="index.html">首页</a>
+      <a href="about.html">实验室简介</a>
+      <a href="directions.html">科研方向</a>
+      <a href="achievements.html">成果展示</a>
+      <a href="news.html">新闻动态</a>
+      <a href="contact.html">联系我们</a>
+      <a href="join.html" class="active">加入我们</a>
+    </nav>
+    <button id="lang-switch">EN</button>
+  </header>
+
+  <main class="section" id="join">
+    <h2>加入我们</h2>
+    
+    <!-- 招聘信息 -->
+    <div class="recruitment-section">
+      <h3>招聘信息</h3>
+      <div class="job-list">
+        <div class="job-card">
+          <h4>博士后研究员</h4>
+          <p class="job-desc">从事认知科学、人工智能或脑机接口相关研究，要求具有相关领域博士学位。</p>
+          <div class="job-details">
+            <span class="job-type">全职</span>
+            <span class="job-location">广州</span>
+            <span class="job-salary">面议</span>
+          </div>
+          <button class="apply-btn" data-job="postdoc">申请职位</button>
+        </div>
+        <div class="job-card">
+          <h4>博士研究生</h4>
+          <p class="job-desc">招收认知科学、计算机科学、生物医学工程等相关专业的博士研究生。</p>
+          <div class="job-details">
+            <span class="job-type">全日制</span>
+            <span class="job-location">广州</span>
+            <span class="job-salary">奖学金</span>
+          </div>
+          <button class="apply-btn" data-job="phd">申请职位</button>
+        </div>
+        <div class="job-card">
+          <h4>硕士研究生</h4>
+          <p class="job-desc">招收计算机科学、人工智能、认知科学等相关专业的硕士研究生。</p>
+          <div class="job-details">
+            <span class="job-type">全日制</span>
+            <span class="job-location">广州</span>
+            <span class="job-salary">奖学金</span>
+          </div>
+          <button class="apply-btn" data-job="master">申请职位</button>
+        </div>
+        <div class="job-card">
+          <h4>研究助理</h4>
+          <p class="job-desc">协助实验室日常研究工作，要求本科及以上学历，有相关研究经验优先。</p>
+          <div class="job-details">
+            <span class="job-type">全职</span>
+            <span class="job-location">广州</span>
+            <span class="job-salary">面议</span>
+          </div>
+          <button class="apply-btn" data-job="assistant">申请职位</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 申请流程 -->
+    <div class="process-section">
+      <h3>申请流程</h3>
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h4>提交申请</h4>
+          <p>填写申请表格并上传简历</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h4>初步筛选</h4>
+          <p>实验室对申请材料进行初步审核</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h4>面试交流</h4>
+          <p>通过初步筛选的候选人进行面试</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h4>录用通知</h4>
+          <p>面试通过后发放录用通知</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 申请表单 -->
+    <div class="application-section">
+      <h3>申请表单</h3>
+      <form id="applicationForm" class="application-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="appName">姓名 *</label>
+            <input type="text" id="appName" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="appEmail">邮箱 *</label>
+            <input type="email" id="appEmail" name="email" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="appPhone">电话 *</label>
+            <input type="tel" id="appPhone" name="phone" required>
+          </div>
+          <div class="form-group">
+            <label for="appPosition">申请职位 *</label>
+            <select id="appPosition" name="position" required>
+              <option value="">请选择职位</option>
+              <option value="postdoc">博士后研究员</option>
+              <option value="phd">博士研究生</option>
+              <option value="master">硕士研究生</option>
+              <option value="assistant">研究助理</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="appEducation">最高学历 *</label>
+          <select id="appEducation" name="education" required>
+            <option value="">请选择学历</option>
+            <option value="bachelor">本科</option>
+            <option value="master">硕士</option>
+            <option value="phd">博士</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="appMajor">专业 *</label>
+          <input type="text" id="appMajor" name="major" required>
+        </div>
+        <div class="form-group">
+          <label for="appExperience">研究经历</label>
+          <textarea id="appExperience" name="experience" rows="4" placeholder="请描述您的研究经历、项目经验等..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="appMotivation">申请动机</label>
+          <textarea id="appMotivation" name="motivation" rows="4" placeholder="请说明您申请该职位的原因和期望..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="appResume">简历上传 *</label>
+          <input type="file" id="appResume" name="resume" accept=".pdf,.doc,.docx" required>
+          <small>支持PDF、Word格式，文件大小不超过5MB</small>
+        </div>
+        <button type="submit" class="submit-btn">提交申请</button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div>联系方式：lab@cislab.edu.cn | 地址：XX大学XX楼XX室</div>
+    <div>© 2024 认知与智能科学实验室 | 粤ICP备xxxx号</div>
+    <div><button id="to-top">返回顶部</button></div>
+  </footer>
+  <script src="join.js"></script>
+</body>
+</html> 
