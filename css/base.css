@@ -1,5 +1,20 @@
 /* 基础样式文件 - 前台页面通用样式 */
 
+/* CSS变量定义 */
+:root {
+  --primary-color: #6c3fd3;
+  --primary-dark: #4b249c;
+  --primary-light: #8a2be2;
+  --secondary-color: #e0d7f7;
+  --text-primary: #333;
+  --text-secondary: #666;
+  --bg-light: #f8f7ff;
+  --border-color: #e0d7f7;
+  --shadow-light: rgba(108, 63, 211, 0.08);
+  --shadow-medium: rgba(108, 63, 211, 0.15);
+  --shadow-dark: rgba(108, 63, 211, 0.25);
+}
+
 /* 全局样式 */
 * {
   box-sizing: border-box;

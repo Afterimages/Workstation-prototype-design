@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资源下载 - 认知与智能科学实验室</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+    <!-- 引入通用导航栏 -->
+    <div id="header-container"></div>
+
+    <main class="resources-container">
+        <div class="resources-header">
+            <h1 data-zh="资源下载中心" data-en="Resource Download Center">资源下载中心</h1>
+            <p data-zh="获取实验室的技术成果、研究报告、软件手册等各类资源" data-en="Access laboratory technical achievements, research reports, software manuals and other resources">获取实验室的技术成果、研究报告、软件手册等各类资源</p>
+        </div>
+
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" class="search-input" id="searchInput" 
+                       data-zh-placeholder="搜索资源..." data-en-placeholder="Search resources..." 
+                       placeholder="搜索资源...">
+                <button class="search-btn" id="searchBtn" 
+                        data-zh="搜索" data-en="Search">搜索</button>
+            </div>
+
+            <div class="category-tabs" id="categoryTabs">
+                <div class="category-tab active" data-category="all" 
+                     data-zh="全部" data-en="All">全部</div>
+                <div class="category-tab" data-category="technical" 
+                     data-zh="技术成果" data-en="Technical Achievements">技术成果</div>
+                <div class="category-tab" data-category="funding" 
+                     data-zh="基金申报书" data-en="Funding Proposals">基金申报书</div>
+                <div class="category-tab" data-category="research" 
+                     data-zh="研究报告" data-en="Research Reports">研究报告</div>
+                <div class="category-tab" data-category="software" 
+                     data-zh="软件手册" data-en="Software Manuals">软件手册</div>
+                <div class="category-tab" data-category="teaching" 
+                     data-zh="教学材料" data-en="Teaching Materials">教学材料</div>
+            </div>
+        </div>
+
+        <div class="resources-grid" id="resourcesGrid">
+            <!-- 资源卡片将通过JavaScript动态生成 -->
+        </div>
+
+        <div class="no-results" id="noResults" style="display: none;">
+            <i>📄</i>
+            <p data-zh="未找到相关资源" data-en="No resources found">未找到相关资源</p>
+        </div>
+    </main>
+
+    <!-- 加载页脚 -->
+    <div id="footer-container"></div>
+
+    <script src="js/common.js"></script>
+    <script src="js/component-loader.js"></script>
+    <script src="resources.js"></script>
+</body>
+</html> 

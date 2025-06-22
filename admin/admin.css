@@ -1540,4 +1540,63 @@ input:checked + .slider:before {
     flex-direction: column;
     text-align: center;
   }
+}
+
+/* 资源管理相关样式 */
+.category-tag.technical { background: #e3f2fd; color: #1976d2; }
+.category-tag.funding { background: #f3e5f5; color: #7b1fa2; }
+.category-tag.research { background: #e8f5e8; color: #388e3c; }
+.category-tag.software { background: #fff3e0; color: #f57c00; }
+.category-tag.teaching { background: #fce4ec; color: #c2185b; }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.page-btn {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.page-btn:hover,
+.page-btn.active {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.page-info {
+  color: #666;
+  font-size: 14px;
+}
+
+/* 动画效果 */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
 } 
