@@ -13,8 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('.username').textContent = currentUser;
 
   // 获取DOM元素
-  const menuToggle = document.getElementById('menuToggle');
-  const sidebar = document.querySelector('.sidebar');
   const logoutBtn = document.getElementById('logoutBtn');
   const searchInput = document.getElementById('searchInput');
   const categoryFilter = document.getElementById('categoryFilter');
@@ -82,11 +80,6 @@ document.addEventListener('DOMContentLoaded', function() {
   ];
 
   let currentEditId = null;
-
-  // 侧边栏切换
-  menuToggle.addEventListener('click', function() {
-    sidebar.classList.toggle('collapsed');
-  });
 
   // 退出登录
   logoutBtn.addEventListener('click', function() {
@@ -293,4 +286,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // 初始化页面
   renderNews();
-}); 
+});
+
+function bindSidebarEvents() {
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.querySelector('.sidebar');
+  if (menuToggle && sidebar) {
+    menuToggle.addEventListener('click', function() {
+      sidebar.classList.toggle('collapsed');
+    });
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bindSidebarEvents);
+} else {
+  bindSidebarEvents();
+} 

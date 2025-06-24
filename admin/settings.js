@@ -11,11 +11,21 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('.username').textContent = currentUser;
 
   // 侧边栏切换
-  const menuToggle = document.getElementById('menuToggle');
-  const sidebar = document.querySelector('.sidebar');
-  menuToggle.addEventListener('click', function() {
-    sidebar.classList.toggle('collapsed');
-  });
+  function bindSidebarEvents() {
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.querySelector('.sidebar');
+    if (menuToggle && sidebar) {
+      menuToggle.addEventListener('click', function() {
+        sidebar.classList.toggle('collapsed');
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindSidebarEvents);
+  } else {
+    bindSidebarEvents();
+  }
 
   // 退出登录
   document.getElementById('logoutBtn').addEventListener('click', function() {

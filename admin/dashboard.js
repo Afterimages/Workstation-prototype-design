@@ -14,21 +14,28 @@ function checkLoginStatus() {
 }
 
 // 侧边栏切换
-const menuToggle = document.getElementById('menuToggle');
-const sidebar = document.querySelector('.sidebar');
-
-menuToggle.addEventListener('click', () => {
-  sidebar.classList.toggle('open');
-});
-
-// 点击外部关闭侧边栏
-document.addEventListener('click', (e) => {
-  if (window.innerWidth <= 768) {
-    if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
-      sidebar.classList.remove('open');
-    }
+function bindSidebarEvents() {
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.querySelector('.sidebar');
+  if (menuToggle && sidebar) {
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768) {
+        if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+          sidebar.classList.remove('open');
+        }
+      }
+    });
   }
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bindSidebarEvents);
+} else {
+  bindSidebarEvents();
+}
 
 // 退出登录
 const logoutBtn = document.getElementById('logoutBtn');

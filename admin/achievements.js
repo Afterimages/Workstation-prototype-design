@@ -73,9 +73,19 @@ document.addEventListener('DOMContentLoaded', function() {
   let currentEditId = null;
 
   // 侧边栏切换
-  menuToggle.addEventListener('click', function() {
-    sidebar.classList.toggle('collapsed');
-  });
+  function bindSidebarEvents() {
+    if (menuToggle && sidebar) {
+      menuToggle.addEventListener('click', function() {
+        sidebar.classList.toggle('collapsed');
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindSidebarEvents);
+  } else {
+    bindSidebarEvents();
+  }
 
   // 退出登录
   logoutBtn.addEventListener('click', function() {
