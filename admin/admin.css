@@ -1599,4 +1599,388 @@ input:checked + .slider:before {
     transform: translateX(100%);
     opacity: 0;
   }
-} 
+}
+
+/* 资源管理页专用样式 开始 */
+.resources-container {
+    padding: 20px;
+}
+
+.resources-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.resources-header h2 {
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.add-resource-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.add-resource-btn:hover {
+    background: var(--primary-dark);
+}
+
+.search-filter-bar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    flex: 1;
+    min-width: 200px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.filter-select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    min-width: 120px;
+}
+
+.resources-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.resources-table th,
+.resources-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.resources-table th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #333;
+}
+
+.resources-table tr:hover {
+    background: #f8f9fa;
+}
+
+.file-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    margin-right: 8px;
+}
+
+.icon-pdf { background: #e74c3c; }
+.icon-doc { background: #3498db; }
+.icon-ppt { background: #e67e22; }
+.icon-xls { background: #27ae60; }
+.icon-zip { background: #9b59b6; }
+.icon-code { background: #34495e; }
+
+.file-info {
+    display: flex;
+    align-items: center;
+}
+
+.file-name {
+    font-weight: 500;
+    color: #333;
+}
+
+.file-meta {
+    font-size: 12px;
+    color: #666;
+    margin-top: 2px;
+}
+
+.category-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.category-technical { background: #e3f2fd; color: #1976d2; }
+.category-funding { background: #f3e5f5; color: #7b1fa2; }
+.category-research { background: #e8f5e8; color: #388e3c; }
+.category-software { background: #fff3e0; color: #f57c00; }
+.category-teaching { background: #fce4ec; color: #c2185b; }
+
+.status-active {
+    color: #27ae60;
+    font-weight: 500;
+}
+
+.status-inactive {
+    color: #e74c3c;
+    font-weight: 500;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-edit,
+.btn-delete {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.3s;
+}
+
+.btn-edit {
+    background: #3498db;
+    color: white;
+}
+
+.btn-edit:hover {
+    background: #2980b9;
+}
+
+.btn-delete {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #c0392b;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.page-btn {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.page-btn:hover,
+.page-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.page-info {
+    color: #666;
+    font-size: 14px;
+}
+
+/* 模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-title {
+    margin: 0;
+    color: var(--primary-color);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(108, 63, 211, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.file-upload {
+    border: 2px dashed #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.file-upload:hover {
+    border-color: var(--primary-color);
+}
+
+.file-upload input[type="file"] {
+    display: none;
+}
+
+.upload-icon {
+    font-size: 24px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.modal-footer {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn-save {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-save:hover {
+    background: var(--primary-dark);
+}
+
+.btn-cancel {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-cancel:hover {
+    background: #5a6268;
+}
+
+@media (max-width: 768px) {
+    .resources-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    .search-filter-bar {
+        flex-direction: column;
+    }
+    .resources-table {
+        font-size: 12px;
+    }
+    .resources-table th,
+    .resources-table td {
+        padding: 8px;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    .action-buttons {
+        flex-direction: column;
+        gap: 4px;
+    }
+}
+/* 资源管理页专用样式 结束 */ 
