@@ -13,15 +13,40 @@
     <!-- 主内容区 -->
     <main class="main-content">
         <!-- 顶部导航 -->
-        <header class="admin-header">
+        <header class="admin-header" id="adminHeader">
             <div class="header-left">
-                <button class="menu-toggle" id="menuToggle">☰</button>
-                <h1>资源管理</h1>
+                <button class="menu-toggle" id="menuToggle" title="切换侧边栏">
+                    <span class="menu-icon">☰</span>
+                </button>
+                <button class="collapse-toggle" id="collapseToggle" title="收起/展开侧边栏">
+                    <span class="collapse-icon" id="collapseIcon">⮜</span>
+                </button>
+                <h1 id="pageTitle">资源管理</h1>
             </div>
             <div class="header-right">
+                <div class="header-actions">
+                    <button class="action-btn" id="notificationsBtn" title="通知">
+                        <span class="action-icon">🔔</span>
+                        <span class="notification-badge" id="notificationCount">0</span>
+                    </button>
+                    <button class="action-btn" id="helpBtn" title="帮助">
+                        <span class="action-icon">❓</span>
+                    </button>
+                </div>
                 <div class="user-info">
-                    <span class="username">管理员</span>
-                    <button class="logout-btn" id="logoutBtn">退出</button>
+                    <div class="user-avatar">👤</div>
+                    <div class="user-details">
+                        <span class="username" id="headerUsername">管理员</span>
+                        <div class="user-dropdown">
+                            <button class="dropdown-toggle" id="userDropdownToggle">▼</button>
+                            <div class="dropdown-menu" id="userDropdownMenu">
+                                <a href="#" class="dropdown-item" id="profileLink">个人资料</a>
+                                <a href="#" class="dropdown-item" id="settingsLink">设置</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item" id="logoutBtn">退出登录</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
