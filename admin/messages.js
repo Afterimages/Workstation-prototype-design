@@ -32,6 +32,40 @@ document.addEventListener('DOMContentLoaded', function() {
   const cancelReplyBtn = document.getElementById('cancelReplyBtn');
   const replyForm = document.getElementById('replyForm');
 
+  // 顶部导航栏下拉菜单交互（点击user-info区域展开/收起）
+  var userInfo = document.querySelector('.user-info');
+  var userDropdownMenu = document.getElementById('userDropdownMenu');
+  if (userInfo && userDropdownMenu) {
+    userInfo.addEventListener('click', function(e) {
+      e.stopPropagation();
+      userDropdownMenu.classList.toggle('show');
+    });
+    document.addEventListener('click', function() {
+      userDropdownMenu.classList.remove('show');
+    });
+    userDropdownMenu.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+
+  // 设置跳转
+  var settingsLink = document.getElementById('settingsLink');
+  if (settingsLink) {
+    settingsLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.href = 'settings.html';
+    });
+  }
+
+  // 个人资料跳转
+  var profileLink = document.getElementById('profileLink');
+  if (profileLink) {
+    profileLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.href = 'settings.html#profile';
+    });
+  }
+
   // 模拟留言数据
   let messages = [
     {

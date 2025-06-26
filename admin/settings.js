@@ -54,6 +54,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // 自动切换到锚点tab
+  if (location.hash === '#profile') {
+    settingsTabs.forEach(tab => {
+      if (tab.dataset.tab === 'profile') {
+        tab.classList.add('active');
+      } else {
+        tab.classList.remove('active');
+      }
+    });
+    settingsPanels.forEach(panel => {
+      if (panel.id === 'profile') {
+        panel.classList.add('active');
+      } else {
+        panel.classList.remove('active');
+      }
+    });
+  }
+
   // 主题选择
   const themeOptions = document.querySelectorAll('.theme-option');
   const currentTheme = localStorage.getItem('adminTheme') || 'purple';
@@ -237,4 +255,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // 初始化页面
   updateSystemStatus();
+
+  // 顶部导航栏下拉菜单交互（点击user-info区域展开/收起）
+  var userInfo = document.querySelector('.user-info');
+  var userDropdownMenu = document.getElementById('userDropdownMenu');
+  if (userInfo && userDropdownMenu) {
+    userInfo.addEventListener('click', function(e) {
+      e.stopPropagation();
+      userDropdownMenu.classList.toggle('show');
+    });
+    document.addEventListener('click', function() {
+      userDropdownMenu.classList.remove('show');
+    });
+    userDropdownMenu.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+
+  // 设置跳转
+  var settingsLink = document.getElementById('settingsLink');
+  if (settingsLink) {
+    settingsLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.href = 'settings.html';
+    });
+  }
+
+  // 个人资料跳转
+  var profileLink = document.getElementById('profileLink');
+  if (profileLink) {
+    profileLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.href = 'settings.html#profile';
+    });
+  }
 }); 
