@@ -317,6 +317,123 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // 通知数据示例
+  var notificationData = [
+    { id: 1, text: '您有一条新的系统消息', type: 'system', time: '09:15', read: false },
+    { id: 2, text: '实验室例会时间调整为每周三下午3点', type: 'meeting', time: '08:40', read: false },
+    { id: 3, text: '项目"智能语音助手"已通过审核', type: 'project', time: '昨天 17:22', read: true },
+    { id: 4, text: '资源"深度学习教程.pdf"已被下载', type: 'resource', time: '昨天 14:05', read: true },
+    { id: 5, text: '欢迎使用后台管理系统', type: 'welcome', time: '前天 10:00', read: true }
+  ];
+
+  var typeMap = {
+    system: { icon: '🔔', color: '#6c3fd3' },
+    meeting: { icon: '📅', color: '#3b82f6' },
+    project: { icon: '📁', color: '#10b981' },
+    resource: { icon: '📄', color: '#f59e42' },
+    welcome: { icon: '👋', color: '#ef4444' }
+  };
+
+  function showNotificationDropdown(messages) {
+    var exist = document.getElementById('notificationDropdown');
+    if (exist) exist.parentNode.removeChild(exist);
+    var dropdown = document.createElement('div');
+    dropdown.id = 'notificationDropdown';
+    dropdown.className = 'notification-dropdown';
+    dropdown.innerHTML = `
+      <div class="dropdown-header">通知</div>
+      <ul class="dropdown-list">
+        ${messages.length ? messages.map(msg => {
+          var type = typeMap[msg.type] || typeMap.system;
+          return `
+            <li class='dropdown-item${msg.read ? '' : ' unread'}' data-id='${msg.id}' title='${msg.text}'>
+              ${!msg.read ? '<span class="unread-dot"></span>' : ''}
+              <span class="item-icon" style="color:${type.color}">${type.icon}</span>
+              <span class="item-text">${msg.text}</span>
+              <span class="item-time">${msg.time}</span>
+            </li>
+          `;
+        }).join('') : '<li class="dropdown-empty">暂无新通知</li>'}
+      </ul>
+      <div class="dropdown-footer"><a href="#" class="dropdown-all">查看全部</a></div>
+    `;
+    var btn = document.getElementById('notificationsBtn');
+    if (btn) {
+      var rect = btn.getBoundingClientRect();
+      dropdown.style.position = 'absolute';
+      dropdown.style.top = (rect.bottom + window.scrollY + 8) + 'px';
+      dropdown.style.left = (rect.left + rect.width/2 - 180) + 'px';
+      dropdown.style.minWidth = '360px';
+      dropdown.style.zIndex = 2100;
+    }
+    document.body.appendChild(dropdown);
+    setTimeout(function(){
+      document.addEventListener('click', closeDropdown, { once: true });
+    }, 0);
+    dropdown.onclick = function(e){ e.stopPropagation(); };
+    function closeDropdown(){
+      if (dropdown.parentNode) dropdown.parentNode.removeChild(dropdown);
+    }
+    dropdown.querySelectorAll('.dropdown-item').forEach(function(item){
+      item.onclick = function(e){
+        e.stopPropagation();
+        var id = parseInt(this.getAttribute('data-id'));
+        var n = notificationData.find(n=>n.id===id);
+        if(n && !n.read){
+          n.read = true;
+          this.classList.remove('unread');
+          var dot = this.querySelector('.unread-dot');
+          if(dot) dot.remove();
+          updateNotificationBadge();
+        }
+      };
+    });
+  }
+
+  function updateNotificationBadge(){
+    var badge = document.getElementById('notificationCount');
+    if(badge){
+      var unread = notificationData.filter(n=>!n.read).length;
+      badge.textContent = unread>0 ? unread : '';
+      badge.style.display = unread>0 ? 'inline-block' : 'none';
+    }
+  }
+
+  var notificationsBtn = document.getElementById('notificationsBtn');
+  if (notificationsBtn) {
+    notificationsBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      showNotificationDropdown(notificationData);
+    });
+  }
+  updateNotificationBadge();
+
+  if (!document.getElementById('notificationDropdownStyle')) {
+    var style = document.createElement('style');
+    style.id = 'notificationDropdownStyle';
+    style.innerHTML = `
+    .notification-dropdown { background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(108,63,211,0.15);padding:0;overflow:hidden;animation:modalIn .18s; }
+    .notification-dropdown .dropdown-header { font-weight:600;font-size:1.08em;color:#6c3fd3;padding:14px 20px 6px 20px;border-bottom:1px solid #eee; }
+    .notification-dropdown .dropdown-list { list-style:none;margin:0;padding:0;max-height:260px;overflow-y:auto; }
+    .notification-dropdown .dropdown-item { padding:10px 18px 10px 16px;font-size:.98em;color:#333;cursor:pointer;transition:.18s;background:#fff; display:flex;align-items:center;gap:10px; border-bottom:1px solid #f3f0fa; position:relative; }
+    .notification-dropdown .dropdown-item:last-child { border-bottom:none; }
+    .notification-dropdown .dropdown-item.unread { background:#f7f3ff;font-weight:600; }
+    .notification-dropdown .dropdown-item.unread:hover { background:#ede6fa; }
+    .notification-dropdown .unread-dot { display:inline-block;width:8px;height:8px;border-radius:50%;background:#ef4444;margin-right:2px; }
+    .notification-dropdown .dropdown-item:not(.unread):hover { background:#f5f3fa; }
+    .notification-dropdown .item-icon { font-size:1.18em;flex-shrink:0; }
+    .notification-dropdown .item-text { flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .notification-dropdown .item-time { color:#aaa;font-size:.92em;margin-left:8px;flex-shrink:0; }
+    .notification-dropdown .dropdown-empty { color:#aaa;text-align:center;padding:32px 0; }
+    .notification-dropdown .dropdown-footer { padding:10px 0 10px 0;text-align:center;border-top:1px solid #eee;background:#faf9fd; }
+    .notification-dropdown .dropdown-all { color:#6c3fd3;text-decoration:none;font-size:.98em; }
+    .notification-dropdown .dropdown-all:hover { text-decoration:underline; }
+    @keyframes modalIn { from{transform:translateY(-12px);opacity:0;} to{transform:translateY(0);opacity:1;} }
+    #notificationCount { background:#ef4444;color:#fff;border-radius:8px;padding:0 6px;font-size:.85em;min-width:18px;display:inline-block;text-align:center;vertical-align:top;margin-left:2px; }
+    `;
+    document.head.appendChild(style);
+  }
+
   // 顶部导航栏通知和帮助弹窗
   function showModal(title, content) {
     var modal = document.createElement('div');
@@ -337,19 +454,6 @@ document.addEventListener('DOMContentLoaded', function() {
     modal.onclick = function(e) {
       if (e.target === modal) document.body.removeChild(modal);
     };
-  }
-
-  var notificationsBtn = document.getElementById('notificationsBtn');
-  if (notificationsBtn) {
-    notificationsBtn.addEventListener('click', function() {
-      var messages = [
-        '暂无新通知',
-        // '您有一条新的系统消息',
-        // '实验室例会时间调整为每周三下午3点',
-      ];
-      var html = '<ul style="margin:0;padding:0 0 0 18px;">' + messages.map(msg => `<li>${msg}</li>`).join('') + '</ul>';
-      showModal('通知', html);
-    });
   }
 
   var helpBtn = document.getElementById('helpBtn');
