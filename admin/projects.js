@@ -389,6 +389,72 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // 顶部导航栏通知和帮助弹窗
+  function showModal(title, content) {
+    var modal = document.createElement('div');
+    modal.className = 'custom-modal';
+    modal.innerHTML = `
+      <div class="custom-modal-content">
+        <div class="custom-modal-header">
+          <span class="custom-modal-title">${title}</span>
+          <span class="custom-modal-close" id="customModalClose">&times;</span>
+        </div>
+        <div class="custom-modal-body">${content}</div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    document.getElementById('customModalClose').onclick = function() {
+      document.body.removeChild(modal);
+    };
+    modal.onclick = function(e) {
+      if (e.target === modal) document.body.removeChild(modal);
+    };
+  }
+
+  var notificationsBtn = document.getElementById('notificationsBtn');
+  if (notificationsBtn) {
+    notificationsBtn.addEventListener('click', function() {
+      var messages = [
+        '暂无新通知',
+        // '您有一条新的系统消息',
+        // '实验室例会时间调整为每周三下午3点',
+      ];
+      var html = '<ul style="margin:0;padding:0 0 0 18px;">' + messages.map(msg => `<li>${msg}</li>`).join('') + '</ul>';
+      showModal('通知', html);
+    });
+  }
+
+  var helpBtn = document.getElementById('helpBtn');
+  if (helpBtn) {
+    helpBtn.addEventListener('click', function() {
+      var html = `
+        <div style="line-height:1.8;">
+          <b>后台管理系统帮助说明：</b><br>
+          1. 使用左侧菜单切换各功能模块。<br>
+          2. 顶部可快速访问通知、帮助、用户操作。<br>
+          3. 如遇问题请联系管理员或查看系统设置。<br>
+        </div>
+      `;
+      showModal('帮助', html);
+    });
+  }
+
+  // 附加样式
+  (function(){
+    var style = document.createElement('style');
+    style.innerHTML = `
+    .custom-modal { position:fixed;z-index:2000;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.18);display:flex;align-items:center;justify-content:center; }
+    .custom-modal-content { background:#fff;border-radius:12px;min-width:320px;max-width:90vw;box-shadow:0 8px 32px rgba(108,63,211,0.15);animation:modalIn .2s; }
+    .custom-modal-header { display:flex;align-items:center;justify-content:space-between;padding:16px 20px 8px 20px;border-bottom:1px solid #eee; }
+    .custom-modal-title { font-weight:600;font-size:1.1em;color:#6c3fd3; }
+    .custom-modal-close { cursor:pointer;font-size:1.3em;color:#aaa;transition:.2s; }
+    .custom-modal-close:hover { color:#ef4444; }
+    .custom-modal-body { padding:18px 20px 22px 20px;font-size:1em;color:#333; }
+    @keyframes modalIn { from{transform:scale(.95);opacity:0;} to{transform:scale(1);opacity:1;} }
+    `;
+    document.head.appendChild(style);
+  })();
+
   // 初始化页面
   renderProjects();
 }); 
