@@ -23,19 +23,11 @@
         <div class="notifications__toolbar-right">
           <label class="notifications__checkbox"><input type="checkbox" id="select-all"> 全选</label>
           <input class="notifications__search" type="text" placeholder="搜索通知标题或内容...">
-          <select class="notifications__type-filter">
-            <option value="">全部类型</option>
-            <option value="system">系统通知</option>
-            <option value="message">留言通知</option>
-            <option value="application">申请通知</option>
-            <option value="achievement">成果通知</option>
-            <option value="project">项目通知</option>
-            <option value="reminder">提醒通知</option>
-          </select>
         </div>
       </div>
       <nav class="notifications__tabs" aria-label="通知分类">
-        <button class="notifications__tab notifications__tab--active" data-status="unread">未读 <span class="notifications__count">2</span></button>
+        <button class="notifications__tab notifications__tab--active" data-status="all">全部 <span class="notifications__count">0</span></button>
+        <button class="notifications__tab" data-status="unread">未读 <span class="notifications__count">2</span></button>
         <button class="notifications__tab" data-status="read">已读 <span class="notifications__count">4</span></button>
         <button class="notifications__tab" data-status="important">重要 <span class="notifications__count">1</span></button>
         <button class="notifications__tab" data-status="archived">已归档 <span class="notifications__count">0</span></button>

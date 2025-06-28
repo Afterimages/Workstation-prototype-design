@@ -110,27 +110,28 @@ window.onload = function() {
     }).join('');
   }
 
-  let currentTab = 'unread';
+  let currentTab = 'all';
   let searchKeyword = '';
-  let typeFilter = '';
   let selectedIds = new Set();
   let pageSize = 10;
   let currentPage = 1;
 
   function filterNotifications() {
+    const keyword = searchKeyword.trim().toLowerCase();
     return notifications.filter(item => {
+      if (currentTab === 'all') return !keyword || (item.title.toLowerCase().includes(keyword) || item.content.toLowerCase().includes(keyword));
       if (currentTab === 'unread' && (item.status !== 'unread' || item.archived)) return false;
       if (currentTab === 'read' && (item.status !== 'read' || item.archived)) return false;
       if (currentTab === 'important' && (!item.important || item.archived)) return false;
       if (currentTab === 'archived' && !item.archived) return false;
-      if (typeFilter && item.type !== typeFilter) return false;
-      if (searchKeyword && !(item.title.includes(searchKeyword) || item.content.includes(searchKeyword))) return false;
+      if (keyword && !(item.title.toLowerCase().includes(keyword) || item.content.toLowerCase().includes(keyword))) return false;
       return true;
     });
   }
 
   function updateCounts() {
     const tabMap = {
+      all: n => !n.archived,
       unread: n => n.status === 'unread' && !n.archived,
       read: n => n.status === 'read' && !n.archived,
       important: n => n.important && !n.archived,
@@ -195,16 +196,6 @@ window.onload = function() {
     });
   }
 
-  // 类型筛选
-  const typeSelect = document.querySelector('.notifications__type-filter');
-  if (typeSelect) {
-    typeSelect.addEventListener('change', function() {
-      typeFilter = this.value;
-      currentPage = 1;
-      rerender();
-    });
-  }
-
   // 全选
   const selectAll = document.getElementById('select-all');
   if (selectAll) {
@@ -221,40 +212,81 @@ window.onload = function() {
 
   // 卡片checkbox
   function delegateCardCheckbox() {
+    // 监听checkbox本身
     document.getElementById('notifications-list')?.addEventListener('change', function(e) {
       if (e.target.classList.contains('notifications__card-checkbox')) {
-        const id = Number(e.target.closest('.notifications__card').dataset.id);
+        const id = Number(e.target.dataset.id);
         if (e.target.checked) selectedIds.add(id);
         else selectedIds.delete(id);
         rerender();
+        updateToolbarState();
+      }
+    });
+    // 监听卡片点击
+    document.getElementById('notifications-list')?.addEventListener('click', function(e) {
+      // 排除详情按钮
+      if (e.target.classList.contains('notifications__card-detail')) return;
+      // 只处理卡片区域点击
+      const cardDiv = e.target.closest('.notifications__card');
+      if (cardDiv) {
+        const id = Number(cardDiv.dataset.id);
+        if (selectedIds.has(id)) selectedIds.delete(id);
+        else selectedIds.add(id);
+        rerender();
+        updateToolbarState();
       }
     });
   }
   delegateCardCheckbox();
 
   // 批量操作
+  function updateToolbarState() {
+    const hasSelected = selectedIds.size > 0;
+    document.querySelector('.notifications__action--delete').disabled = !hasSelected;
+    document.querySelector('.notifications__action--archive').disabled = !hasSelected;
+    document.querySelector('.notifications__action--important').disabled = !hasSelected;
+    document.querySelector('.notifications__action--readall').disabled = !hasSelected;
+  }
+
   function batchUpdate(fn) {
     notifications.forEach(n => {
       if (selectedIds.has(n.id)) fn(n);
     });
     selectedIds.clear();
     rerender();
+    updateToolbarState();
   }
   document.querySelector('.notifications__action--readall')?.addEventListener('click', () => {
-    batchUpdate(n => { n.status = 'read'; });
+    if (selectedIds.size > 0) batchUpdate(n => { n.status = 'read'; });
   });
   document.querySelector('.notifications__action--important')?.addEventListener('click', () => {
-    batchUpdate(n => { n.important = true; });
+    if (selectedIds.size > 0) batchUpdate(n => { n.important = true; });
   });
   document.querySelector('.notifications__action--archive')?.addEventListener('click', () => {
-    batchUpdate(n => { n.archived = true; });
+    if (selectedIds.size > 0) batchUpdate(n => { n.archived = true; });
   });
   document.querySelector('.notifications__action--delete')?.addEventListener('click', () => {
-    notifications = notifications.filter(n => !selectedIds.has(n.id));
-    selectedIds.clear();
-    currentPage = 1;
-    rerender();
+    if (selectedIds.size > 0) {
+      notifications = notifications.filter(n => !selectedIds.has(n.id));
+      selectedIds.clear();
+      currentPage = 1;
+      rerender();
+      updateToolbarState();
+    }
   });
+
+  // 选中状态变化时刷新按钮状态
+  document.getElementById('notifications-list')?.addEventListener('change', function(e) {
+    if (e.target.classList.contains('notifications__card-checkbox')) {
+      updateToolbarState();
+    }
+  });
+  document.getElementById('select-all')?.addEventListener('change', function() {
+    updateToolbarState();
+  });
+
+  // 初始渲染后刷新按钮状态
+  setTimeout(updateToolbarState, 0);
 
   // 详情弹窗
   function delegateDetailModal() {
@@ -263,6 +295,9 @@ window.onload = function() {
         const id = Number(e.target.closest('.notifications__card').dataset.id);
         const n = notifications.find(n => n.id === id);
         if (!n) return;
+        // 标记为已读
+        n.status = 'read';
+        rerender();
         const modal = document.getElementById('notification-modal');
         const body = modal.querySelector('.notifications__modal-body');
         body.innerHTML = `
