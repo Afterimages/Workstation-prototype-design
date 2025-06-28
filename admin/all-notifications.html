@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全部通知 - 后台管理系统</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body notifications-bg">
+  <script src="js/sidebar-loader.js"></script>
+  <script>loadSidebar('all-notifications');</script>
+
+  <main class="main-content">
+    <!-- 全部通知页面内容区 -->
+    <section class="notifications">
+      <div class="notifications__toolbar">
+        <div class="notifications__toolbar-left">
+          <button class="notifications__action notifications__action--readall">全部标记已读</button>
+          <button class="notifications__action notifications__action--important">标记重要</button>
+          <button class="notifications__action notifications__action--archive">归档</button>
+          <button class="notifications__action notifications__action--delete">删除</button>
+        </div>
+        <div class="notifications__toolbar-right">
+          <label class="notifications__checkbox"><input type="checkbox" id="select-all"> 全选</label>
+          <input class="notifications__search" type="text" placeholder="搜索通知标题或内容...">
+          <select class="notifications__type-filter">
+            <option value="">全部类型</option>
+            <option value="system">系统通知</option>
+            <option value="message">留言通知</option>
+            <option value="application">申请通知</option>
+            <option value="achievement">成果通知</option>
+            <option value="project">项目通知</option>
+            <option value="reminder">提醒通知</option>
+          </select>
+        </div>
+      </div>
+      <nav class="notifications__tabs" aria-label="通知分类">
+        <button class="notifications__tab notifications__tab--active" data-status="unread">未读 <span class="notifications__count">2</span></button>
+        <button class="notifications__tab" data-status="read">已读 <span class="notifications__count">4</span></button>
+        <button class="notifications__tab" data-status="important">重要 <span class="notifications__count">1</span></button>
+        <button class="notifications__tab" data-status="archived">已归档 <span class="notifications__count">0</span></button>
+      </nav>
+      <section class="notifications__list" id="notifications-list">
+        <!-- 通知卡片列表，JS动态渲染 -->
+      </section>
+      <nav class="notifications__pagination" id="notifications-pagination" aria-label="分页导航">
+        <button class="notifications__page-btn" id="pagePrev">上一页</button>
+        <span class="notifications__page-info" id="pageInfo">第 1 页 / 共 1 页</span>
+        <button class="notifications__page-btn" id="pageNext">下一页</button>
+      </nav>
+      <div class="notifications__empty" id="notifications-empty" style="display:none;">
+        <div class="notifications__empty-icon">📭</div>
+        <div class="notifications__empty-text">暂无通知</div>
+      </div>
+    </section>
+
+    <!-- 通知详情弹窗 -->
+    <div class="notifications__modal" id="notification-modal" style="display:none;">
+      <div class="notifications__modal-content">
+        <span class="notifications__modal-close">&times;</span>
+        <div class="notifications__modal-body">
+          <!-- 详情内容JS填充 -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="all-notifications.js"></script>
+</body>
+</html> 
