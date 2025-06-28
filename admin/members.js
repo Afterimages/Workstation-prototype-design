@@ -132,6 +132,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       };
     });
+    dropdown.querySelector('.dropdown-all')?.addEventListener('click', function(e){
+      e.preventDefault();
+      window.location.href = 'all-notifications.html';
+    });
   }
 
   function updateNotificationBadge(){
